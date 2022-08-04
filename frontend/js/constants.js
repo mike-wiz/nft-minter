@@ -1,7 +1,7 @@
 const contractAddress = "0x645F2e946bE66022b419a61f3FA74086741b4d9B"; // Replace with your own contract address
 const chain = 'rinkeby'; // rinkeby, polygon, or ethereum
 
-const welcome_h1 = "MakePaul NFT Collection";
+const welcome_h1 = "MakePaul NFT Collection!";
 const welcome_h2 = "A collection of 10,000 NFTs inspired by your favorite celebrity-athlete, Jake Paul!";
 const welcome_p = "Welcome to the MakePaul NFT Collection! A series of 10,000 NFTs inspired by everyone's favorite celebrity-athlete, Jake Paul! Each individual MakePaul is uniquely generated and lives to brawl on the Ethereum blockchain. Unlock your very own unique MakePaul and receive access to various future perks and members-only benefits. New areas and perks will be revealed and can be unlocked through roadmap activation.";
 
