@@ -49,6 +49,7 @@ build/Release
 
 # Dependency directories
 
+test/
 build/
 layers/
 slider/
