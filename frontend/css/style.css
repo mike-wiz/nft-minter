@@ -140,7 +140,7 @@ header .logo img {
 }
 .banner {
   height: auto;
-  min-width: 280px;
+  min-height: 280px;
   width: 100%;
   max-width: 1080px;
   display: block;

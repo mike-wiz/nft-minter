@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const splide = new Splide(".splide", {
     type: "loop",
     arrows: false,
-    perMove: 3,
+    perMove: 2,
     pagination: false,
     autoplay: true,
     direction: 'ttb',
@@ -52,6 +52,7 @@ const updateConnectStatus = async () => {
   const notConnected = document.querySelector('.not-connected');
   // const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+    // METAMASK NOT INSTALLED
     onboardButton.innerText = "Install MetaMask";
     onboardButton.onclick = () => {
       onboardButton.innerText = "Connecting...";
@@ -63,6 +64,7 @@ const updateConnectStatus = async () => {
       notConnected.classList.add('show-not-connected');
     };
   } else if (accounts && accounts.length > 0) {
+    // CONNECTED TO METAMASK
     onboardButton.innerText = '✔ Connected'; // `✔ ...${accounts[0].slice(-4)}`;
     window.address = accounts[0];
     onboardButton.disabled = true;
@@ -74,6 +76,7 @@ const updateConnectStatus = async () => {
     window.contract = new web3.eth.Contract(abi, contractAddress);
     loadInfo();
   } else {
+    // CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
     // HIDE SPINNER
     // spinner.classList.add('hidden');
