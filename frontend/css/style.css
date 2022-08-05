@@ -170,12 +170,18 @@ header .logo img {
   float: right;
 }
 .inner {
-  width: calc(100% - 320px);
   max-width: 680px;
   height: auto;
   display: block;
   position: relative;
   margin: 0 auto;
+}
+.inner img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: none;
+  margin: 0 auto 40px;
 }
 
 .menu {
@@ -233,6 +239,7 @@ header .logo img {
 /* BUTTONS */
 
 .btn {
+  min-width: 216px;
   display: inline-block;
   font-family: var(--font-secondary);
   font-weight: 800;
@@ -261,6 +268,9 @@ header .logo img {
 }
 .btn:disabled {
   cursor: default;
+}
+.btn i {
+  margin-right: 6px;
 }
 
 .wallet-btn {
@@ -517,7 +527,7 @@ section {
 /* SLIDDER */
 .slider {
   width: 320px;
-  height: 640px;
+  height: 960px;
   display: block;
   position: relative;
   float: left;
@@ -561,17 +571,23 @@ section {
   .menu {
     gap: 1rem;
   }
-  .wallet-btn {
+  .btn {
+    min-width: 180px;
+    font-size: .8rem;
     margin-left: 0;
     padding: 0.5rem 1rem;
-    max-width: 8rem;
   }
-  .not-connected {
-    background-color: var(--bg-color-transparent);
-    border-radius: 5px;
-    padding: 2rem;
-    margin: 0 auto;
+  .content.right {
+    width: 100%;
+    float: none;
   }
+  .slider {
+    display: none;
+  }
+  .inner img {
+    display: block;
+  }
+
   .countdown ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -601,6 +617,11 @@ section {
   .mint-qty .btn {
     padding: 1rem;
     font-size: 13px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .content.right {
+    padding: 60px 16px;
   }
 }
 
