@@ -193,7 +193,7 @@ header .logo img {
   opacity: 1;
 }
 
-.not-connected h1 {
+.content h1, .not-connected h1 {
   font-size: 2rem;
   font-weight: 800;
   font-style: italic;
@@ -203,7 +203,7 @@ header .logo img {
   color: var(--primary);
 }
 
-.not-connected h2 {
+.content h2, .not-connected h2 {
   font-size: 1.25rem;
   font-weight: 800;
   font-style: italic;
@@ -211,7 +211,7 @@ header .logo img {
   margin: 0 0 40px;
 }
 
-.not-connected p {
+.content p, .not-connected p {
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-secondary);
