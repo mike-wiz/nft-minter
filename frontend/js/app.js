@@ -4,11 +4,11 @@ let accounts;
 window.addEventListener("DOMContentLoaded", async () => {
   const welcomeH1 = document.getElementById("welcomeH1");
   const welcomeH2 = document.getElementById("welcomeH2");
-  const welcomeP = document.getElementById("welcomeP");
+  const welcomeP  = document.getElementById("welcomeP");
 
   welcomeH1.innerText = welcome_h1;
   welcomeH2.innerText = welcome_h2;
-  welcomeP.innerHTML = welcome_p;
+  welcomeP.innerHTML  = welcome_p;
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -35,17 +35,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     width: "320px",
     autoHeight: true,
   });
-  // const splide = new Splide(".splide", {
-  //   type: "loop",
-  //   arrows: false,
-  //   perMove: 3,
-  //   pagination: false,
-  //   autoplay: true,
-  //   direction: 'ltr',
-  //   height: "320px",
-  //   width: '100%',
-  //   autoHeight: false,
-  // });
   splide.mount();
 
   updateConnectStatus();
@@ -166,7 +155,12 @@ async function checkChain() {
 }
 
 async function loadInfo() {
-  window.info = await contract.methods.getInfo().call();
+  // window.info = await window.contract.methods.getInfo().call();
+  window.info = await window.contract.methods.getInfo().call().then(function(res) {
+    console.log(res);
+  }).catch(function(err) {
+    console.log(err);
+  });
   const publicMintActive = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
   const mainHeading = document.getElementById("mainHeading");
