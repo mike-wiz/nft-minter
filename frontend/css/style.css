@@ -452,7 +452,7 @@ section {
 /* SLIDDER */
 .slider {
   width: 320px;
-  height: 100vh;
+  height: 640px;
   display: block;
   position: relative;
   float: left;
