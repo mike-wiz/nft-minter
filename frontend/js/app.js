@@ -185,26 +185,30 @@ async function loadInfo() {
   const presaleMintActive = await contract.methods.presaleActive().call();
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
-  const mainHeading       = document.getElementById("mainHeading");
-  const subHeading        = document.getElementById("subHeading");
-  const mainText          = document.getElementById("mainText");
-  const actionButton      = document.getElementById("actionButton");
+  // const mainHeading       = document.getElementById("mainHeading");
+  // const subHeading        = document.getElementById("subHeading");
+  // const mainText          = document.getElementById("mainText");
+  // const actionButton      = document.getElementById("actionButton");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
   // const spinner = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
-    mainHeading.innerText = h1_public_mint;
-    mainText.innerText    = p_public_mint;
-    actionButton.classList.add('hidden');
+    //// PUBLIC ACTIVE
+    console.log("Sale Active!");
+    // mainHeading.innerText = h1_public_mint;
+    // mainText.innerText    = p_public_mint;
+    // actionButton.classList.add('hidden');
     mintButton.innerText  = button_public_mint;
     mintContainer.classList.remove('hidden');
     setTotalPrice();
   } else if (presaleMintActive) {
+    //// PRESALE ACTIVE
+
     startTime             = window.info.runtimeConfig.publicMintStart;
-    mainHeading.innerText = h1_presale_mint;
-    subHeading.innerText  = h2_presale_mint;
+    // mainHeading.innerText = h1_presale_mint;
+    // subHeading.innerText  = h2_presale_mint;
 
     try {
       // CHECK IF WHITELISTED
@@ -214,28 +218,30 @@ async function loadInfo() {
       const merkleJson  = await merkleData.json();
       const whitelisted = await contract.methods.isWhitelisted(window.address, merkleJson).call();
       if(!whitelisted) {
-        mainText.innerText     = p_presale_mint_not_whitelisted;
-        actionButton.innerText = button_presale_mint_not_whitelisted;
+        // mainText.innerText     = p_presale_mint_not_whitelisted;
+        // actionButton.innerText = button_presale_mint_not_whitelisted;
       } else {
-        mainText.innerText     = p_presale_mint_whitelisted;
-        actionButton.classList.add('hidden');
-        mintButton.innerText   = button_presale_mint_whitelisted;
-        mintContainer.classList.remove('hidden');
+        // mainText.innerText     = p_presale_mint_whitelisted;
+        // actionButton.classList.add('hidden');
+        // mintButton.innerText   = button_presale_mint_whitelisted;
+        // mintContainer.classList.remove('hidden');
       }
     } catch(e) {
       // console.log(e);
-      mainText.innerText     = p_presale_mint_already_minted;
-      actionButton.innerText = button_presale_already_minted;
+      // mainText.innerText     = p_presale_mint_already_minted;
+      // actionButton.innerText = button_presale_already_minted;
     }
     setTotalPrice();
   } else {
+    console.log("Sale Not Active Yet...");
     startTime              = window.info.runtimeConfig.presaleMintStart;
-    mainHeading.innerText  = h1_presale_coming_soon;
-    subHeading.innerText   = h2_presale_coming_soon;
-    mainText.innerText     = p_presale_coming_soon;
-    actionButton.innerText = button_presale_coming_soon;
+    // mainHeading.innerText  = h1_presale_coming_soon;
+    // subHeading.innerText   = h2_presale_coming_soon;
+    // mainText.innerText     = p_presale_coming_soon;
+    // actionButton.innerText = button_presale_coming_soon;
   }
 
+  console.log(startTime);
   const clockdiv = document.getElementById("countdown");
   clockdiv.setAttribute("data-date", startTime);
   countdown();
