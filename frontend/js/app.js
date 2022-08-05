@@ -74,7 +74,7 @@ const updateConnectStatus = async () => {
       notConnected.classList.add('show-not-connected');
     };
   } else if (accounts && accounts.length > 0) {
-    onboardButton.innerText = `✔ ...${accounts[0].slice(-4)}`;
+    onboardButton.innerText = 'Connected to MetaMask'; // `✔ ...${accounts[0].slice(-4)}`;
     window.address = accounts[0];
     onboardButton.disabled = true;
     onboarding.stopOnboarding();
