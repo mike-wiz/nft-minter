@@ -76,7 +76,7 @@ header .logo img {
 
 .custom-shape-divider-bottom {
   position: absolute;
-  bottom: -100px;
+  top: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
@@ -580,6 +580,7 @@ section {
   .content.right {
     width: 100%;
     float: none;
+    padding-bottom: 200px;
   }
   .slider {
     display: none;
@@ -621,7 +622,7 @@ section {
 }
 @media screen and (max-width: 480px) {
   .content.right {
-    padding: 60px 16px;
+    padding: 60px 16px 180px;
   }
 }
 
