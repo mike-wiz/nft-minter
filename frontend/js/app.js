@@ -278,11 +278,11 @@ async function loadInfo() {
 }
 
 function setTotalPrice() {
-  console.log(info.deploymentConfig.mintPrice);
+  console.log("Mint Price: " + info.deploymentConfig.mintPrice);
 
   const mintInput = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
-  console.log(mintInputValue);
+  console.log("Input Value: " + mintInputValue);
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
