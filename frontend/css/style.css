@@ -55,9 +55,9 @@ body {
 /* HEADER */
 
 header {
-  background-color: var(--bg-color);
-  /* box-shadow: var(--header-shadow); */
-  box-shadow: 0 4px 2px -2px var(--header-shadow);
+  background: var(--accent-color);
+  /* background-color: var(--bg-color);
+  box-shadow: 0 4px 2px -2px var(--header-shadow); */
 }
 
 header .container {
@@ -71,6 +71,7 @@ header .container {
 header .logo img {
   width: auto;
   height: 32px;
+  display: none;
 }
 
 .custom-shape-divider-bottom {
@@ -131,6 +132,7 @@ header .logo img {
 .center {
   width: 100%;
   height: auto;
+  min-height: 420px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -140,9 +142,8 @@ header .logo img {
 }
 .banner {
   height: auto;
-  min-height: 280px;
   width: 100%;
-  max-width: 1080px;
+  max-width: 880px;
   display: block;
   margin: 0 auto 40px;
 }
@@ -250,6 +251,7 @@ header .logo img {
   border: 2px solid transparent;
   border-radius: 0;
   box-shadow: var(--header-shadow);
+  white-space: nowrap;
 }
 .btn:hover {
   box-shadow: none;
@@ -346,7 +348,7 @@ section {
 }
 
 #countdown {
-  /* display: none; */
+  display: none;
   text-align: center;
 }
 
