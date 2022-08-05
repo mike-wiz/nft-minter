@@ -158,12 +158,7 @@ async function checkChain() {
 }
 
 async function loadInfo() {
-  // window.info = await window.contract.methods.getInfo().call();
-  // window.info = await window.contract.methods.getInfo().call().then(function(res) {
-  //   console.log(res);
-  // }).catch(function(err) {
-  //   console.log(err);
-  // });
+  window.info = await window.contract.methods.getInfo().call();
   const publicMintActive = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
   const mainHeading = document.getElementById("mainHeading");
