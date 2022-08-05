@@ -6,7 +6,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   const welcomeH2 = document.getElementById("welcomeH2");
   const welcomeP  = document.getElementById("welcomeP");
 
-  const modalTrigger  = document.getElementById("modalTrigger").onclick = function() {modal(document.getElementById("modalMint"))};
+  const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
+  for(var i =0; i < mintTrigger.length; i++) {
+      mintTrigger[i].onclick = function() {modal(document.getElementById("modalMint"))};
+  }
 
   welcomeH1.innerText = welcome_h1;
   welcomeH2.innerText = welcome_h2;
@@ -108,10 +111,10 @@ const updateConnectStatus = async () => {
 // Modal JS
 async function modal(modal) {
   // Get the <span> element that closes the modal
-  var span = modal.getElementsByClassName("close")[0];
+  var close = modal.getElementsByClassName("close")[0];
   modal.style.display = "block";
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  close.onclick = function() {
     modal.style.display = "none";
   }
   // When the user clicks anywhere outside of the modal, close it
