@@ -270,6 +270,7 @@ async function loadInfo() {
   const totalSupply = document.getElementById("totalSupply");
   const mintInput = document.getElementById("mintInput");
 
+  console.log("DeploymentConfig: " + info.deploymentConfig);
   console.log("Price: " + price);
   console.log("Price Type: " + priceType);
 
@@ -314,6 +315,7 @@ async function loadInfo() {
 }
 
 function setTotalPrice() {
+
   const mintInput = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
@@ -336,6 +338,7 @@ function setTotalPrice() {
   } else if (chain === 'polygon') {
     priceType = 'MATIC';
   }
+
   const price = web3.utils.fromWei(totalPriceWei.toString(), 'ether');
   totalPrice.innerText = `${price} ${priceType}`;
   mintButton.disabled = false;
@@ -343,6 +346,7 @@ function setTotalPrice() {
 }
 
 async function mint() {
+
   const mintButton = document.getElementById("mintButton");
   mintButton.disabled = true;
   const spinner = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
