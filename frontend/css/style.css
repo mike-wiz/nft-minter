@@ -218,7 +218,7 @@ header .logo img {
   line-height: 1.8;
 }
 
-.not-connected b {
+.content b, .not-connected b {
   color: var(--primary);
 }
 
