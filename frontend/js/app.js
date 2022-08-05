@@ -6,9 +6,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   const welcomeH2 = document.getElementById("welcomeH2");
   const welcomeP  = document.getElementById("welcomeP");
 
+  // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
   for(var i =0; i < mintTrigger.length; i++) {
-      mintTrigger[i].onclick = function() {modal(document.getElementById("modalMint"))};
+    mintTrigger[i].onclick = function() {modal(document.getElementById("modalMint"))};
   }
 
   welcomeH1.innerText = welcome_h1;
@@ -50,6 +51,23 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
   }
 });
+
+//// MODAL JS
+async function modal(modal) {
+  // Get the <span> element that closes the modal
+  var close = modal.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+  // When the user clicks on <span> (x), close the modal
+  close.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
 
 const updateConnectStatus = async () => {
   const onboarding    = new MetaMaskOnboarding();
@@ -107,23 +125,6 @@ const updateConnectStatus = async () => {
     };
   }
 };
-
-// Modal JS
-async function modal(modal) {
-  // Get the <span> element that closes the modal
-  var close = modal.getElementsByClassName("close")[0];
-  modal.style.display = "block";
-  // When the user clicks on <span> (x), close the modal
-  close.onclick = function() {
-    modal.style.display = "none";
-  }
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-}
 
 async function checkChain() {
   let chainId = 0;
@@ -183,6 +184,7 @@ async function loadInfo() {
   window.info             = await window.contract.methods.getInfo().call();
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
+  console.log("INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
   // const mainHeading       = document.getElementById("mainHeading");
@@ -308,11 +310,12 @@ async function loadInfo() {
 }
 
 function setTotalPrice() {
-  console.log("Mint Price: " + info.deploymentConfig.mintPrice);
-
   const mintInput = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
+
+  console.log("Mint Price: " + info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
+
   const totalPrice = document.getElementById("totalPrice");
   const mintButton = document.getElementById("mintButton");
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
