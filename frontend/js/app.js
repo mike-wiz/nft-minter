@@ -6,6 +6,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   const welcomeH2 = document.getElementById("welcomeH2");
   const welcomeP  = document.getElementById("welcomeP");
 
+  const modalTrigger  = document.getElementById("modalTrigger").onclick = function() {modal(document.getElementById("modalMint"))};
+
   welcomeH1.innerText = welcome_h1;
   welcomeH2.innerText = welcome_h2;
   welcomeP.innerHTML  = welcome_p;
@@ -103,6 +105,23 @@ const updateConnectStatus = async () => {
   }
 };
 
+// Modal JS
+async function modal(modal) {
+  // Get the <span> element that closes the modal
+  var span = modal.getElementsByClassName("close")[0];
+  modal.style.display = "block";
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
 async function checkChain() {
   let chainId = 0;
   if(chain === 'rinkeby') {
@@ -161,6 +180,8 @@ async function loadInfo() {
   window.info             = await window.contract.methods.getInfo().call();
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
+  console.log("Public Active: " + publicMintActive);
+  console.log("Pre-sale Active: " + presaleMintActive);
   const mainHeading       = document.getElementById("mainHeading");
   const subHeading        = document.getElementById("subHeading");
   const mainText          = document.getElementById("mainText");
