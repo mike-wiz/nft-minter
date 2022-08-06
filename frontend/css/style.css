@@ -497,6 +497,7 @@ section {
   vertical-align: top;
   text-align: center;
   outline: none;
+  background: #FFF;
 }
 
 .input-number,
