@@ -208,6 +208,10 @@ header .logo img {
   margin: 0 0 40px;
 }
 
+.content h2 i {
+  margin-right: 8px;
+}
+
 .content p {
   font-size: 1rem;
   font-weight: 600;
@@ -377,6 +381,10 @@ section {
   border-radius: 4px 4px 0 0;
   background: var(--bg-color-transparent);
   color: var(--font-color);
+}
+.countdown .clock-item .locked {
+  font-weight: 500;
+  color: #4D4D4D;
 }
 .countdown .clock-item .count-text {
   width: 100%;
@@ -610,6 +618,14 @@ section {
 @media screen and (max-width: 480px) {
   .content.right {
     padding: 60px 16px 180px;
+  }
+}
+@media all and (max-width: 420px) {
+  #noMetamaskH1 {
+    font-size: 1.75rem;
+  }
+  #noMetamaskH2 {
+    font-size: 1rem;
   }
 }
 

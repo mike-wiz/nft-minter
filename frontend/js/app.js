@@ -85,7 +85,7 @@ const updateConnectStatus = async () => {
       onboarding.startOnboarding();
     };
     noMetamask.classList.remove('hidden');
-    noMetamaskH2.innerText     = "Install MetaMask to See More!";
+    noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Install &amp; Connect to MetaMask to Unlock Full Access";
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
@@ -98,7 +98,7 @@ const updateConnectStatus = async () => {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
     noMetamask.classList.remove('hidden');
-    noMetamaskH2.innerText  = "Connect to MetaMask to See More!";
+    noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Connect to MetaMask to Unlock Full Access";
     onboardButton.onclick = async () => {
       await window.ethereum
         .request({
@@ -110,6 +110,7 @@ const updateConnectStatus = async () => {
           window.address = accts[0];
           accounts = accts;
           window.contract = new web3.eth.Contract(abi, contractAddress);
+          location.reload();
           noMetamask.classList.add('hidden');
           loadInfo();
         });
