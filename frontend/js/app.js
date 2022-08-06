@@ -72,7 +72,7 @@ async function modal(modal) {
 const updateConnectStatus = async () => {
   const onboarding    = new MetaMaskOnboarding();
   const onboardButton = document.getElementById("connectWallet");
-  const notConnected  = document.querySelector('.not-connected');
+  // const notConnected  = document.querySelector('.not-connected');
   // const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     // METAMASK NOT INSTALLED
@@ -83,8 +83,8 @@ const updateConnectStatus = async () => {
       onboarding.startOnboarding();
       // HIDE SPINNER
       // spinner.classList.add('hidden');
-      notConnected.classList.remove('hidden');
-      notConnected.classList.add('show-not-connected');
+      // notConnected.classList.remove('hidden');
+      // notConnected.classList.add('show-not-connected');
     };
   } else if (accounts && accounts.length > 0) {
     // CONNECTED TO METAMASK
@@ -92,19 +92,19 @@ const updateConnectStatus = async () => {
     window.address = accounts[0];
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
-    notConnected.classList.remove('show-not-connected');
-    notConnected.classList.add('hidden');
-    // SHOW SPINNER
+    // notConnected.classList.remove('show-not-connected');
+    // notConnected.classList.add('hidden');
+    //// SHOW SPINNER
     // spinner.classList.remove('hidden');
     window.contract = new web3.eth.Contract(abi, contractAddress);
     loadInfo();
   } else {
-    // CONNECT TO METAMASK
+    //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
-    // HIDE SPINNER
+    //// HIDE SPINNER
     // spinner.classList.add('hidden');
-    notConnected.classList.remove('hidden');
-    notConnected.classList.add('show-not-connected');
+    // notConnected.classList.remove('hidden');
+    // notConnected.classList.add('show-not-connected');
     onboardButton.onclick = async () => {
       await window.ethereum
         .request({
@@ -112,9 +112,9 @@ const updateConnectStatus = async () => {
         })
         .then(function (accts) {
           onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
-          notConnected.classList.remove('show-not-connected');
-          notConnected.classList.add('hidden');
-          // SHOW SPINNER
+          // notConnected.classList.remove('show-not-connected');
+          // notConnected.classList.add('hidden');
+          //// SHOW SPINNER
           // spinner.classList.remove('hidden');
           onboardButton.disabled = true;
           window.address = accts[0];
@@ -191,6 +191,8 @@ async function loadInfo() {
   // const subHeading        = document.getElementById("subHeading");
   // const mainText          = document.getElementById("mainText");
   // const actionButton      = document.getElementById("actionButton");
+  const mintActions       = document.getElementById("mintActions");
+  const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
   // const spinner = document.getElementById("spinner");
@@ -203,40 +205,45 @@ async function loadInfo() {
     // mainText.innerText    = p_public_mint;
     // actionButton.classList.add('hidden');
     mintButton.innerText  = button_public_mint;
+    mintActions.classList.remove('hidden');
+    mintCollection.classList.remove('hidden');
     mintContainer.classList.remove('hidden');
     setTotalPrice();
-  } else if (presaleMintActive) {
-    //// PRESALE ACTIVE
-
-    startTime             = window.info.runtimeConfig.publicMintStart;
-    // mainHeading.innerText = h1_presale_mint;
-    // subHeading.innerText  = h2_presale_mint;
-    //
-    // try {
-    //   // CHECK IF WHITELISTED
-    //   const merkleData = await fetch(
-    //     `/.netlify/functions/merkleProof/?wallet=${window.address}&chain=${chain}&contract=${contractAddress}`
-    //   );
-    //   const merkleJson  = await merkleData.json();
-    //   const whitelisted = await contract.methods.isWhitelisted(window.address, merkleJson).call();
-    //   if(!whitelisted) {
-    //     mainText.innerText     = p_presale_mint_not_whitelisted;
-    //     actionButton.innerText = button_presale_mint_not_whitelisted;
-    //   } else {
-    //     mainText.innerText     = p_presale_mint_whitelisted;
-    //     actionButton.classList.add('hidden');
-    //     mintButton.innerText   = button_presale_mint_whitelisted;
-    //     mintContainer.classList.remove('hidden');
-    //   }
-    // } catch(e) {
-    //   console.log(e);
-    //   mainText.innerText     = p_presale_mint_already_minted;
-    //   actionButton.innerText = button_presale_already_minted;
-    // }
-    // setTotalPrice();
-  } else {
+  }
+  // else if (presaleMintActive) {
+  //   //// PRESALE ACTIVE
+  //   console.log("Pre-sale Active!");
+  //   startTime = window.info.runtimeConfig.publicMintStart;
+  //   // mainHeading.innerText = h1_presale_mint;
+  //   // subHeading.innerText  = h2_presale_mint;
+  //   //
+  //   // try {
+  //   //   // CHECK IF WHITELISTED
+  //   //   const merkleData = await fetch(
+  //   //     `/.netlify/functions/merkleProof/?wallet=${window.address}&chain=${chain}&contract=${contractAddress}`
+  //   //   );
+  //   //   const merkleJson  = await merkleData.json();
+  //   //   const whitelisted = await contract.methods.isWhitelisted(window.address, merkleJson).call();
+  //   //   if(!whitelisted) {
+  //   //     mainText.innerText     = p_presale_mint_not_whitelisted;
+  //   //     actionButton.innerText = button_presale_mint_not_whitelisted;
+  //   //   } else {
+  //   //     mainText.innerText     = p_presale_mint_whitelisted;
+  //   //     actionButton.classList.add('hidden');
+  //   //     mintButton.innerText   = button_presale_mint_whitelisted;
+  //   //     mintContainer.classList.remove('hidden');
+  //   //   }
+  //   // } catch(e) {
+  //   //   console.log(e);
+  //   //   mainText.innerText     = p_presale_mint_already_minted;
+  //   //   actionButton.innerText = button_presale_already_minted;
+  //   // }
+  //   // setTotalPrice();
+  // }
+  else {
+    //// NOT ACTIVE
     console.log("Sale Not Active Yet...");
-    startTime              = window.info.runtimeConfig.presaleMintStart;
+    startTime = window.info.runtimeConfig.presaleMintStart;
     // mainHeading.innerText  = h1_presale_coming_soon;
     // subHeading.innerText   = h2_presale_coming_soon;
     // mainText.innerText     = p_presale_coming_soon;
@@ -252,10 +259,10 @@ async function loadInfo() {
   // spinner.classList.add('hidden');
 
   // SHOW CARD
-  setTimeout(() => {
+  // setTimeout(() => {
     const countdownCard = document.querySelector('.countdown');
     countdownCard.classList.add('show-card');
-  }, 1000);
+  // }, 1000);
 
   let priceType = '';
   if(chain === 'rinkeby' || chain === 'ethereum') {
@@ -264,26 +271,26 @@ async function loadInfo() {
     priceType = 'MATIC';
   }
 
-  const price = web3.utils.fromWei(info.deploymentConfig.mintPrice, 'ether');
+  const price        = web3.utils.fromWei(info.deploymentConfig.mintPrice, 'ether');
   const pricePerMint = document.getElementById("pricePerMint");
-  const maxPerMint = document.getElementById("maxPerMint");
-  const totalSupply = document.getElementById("totalSupply");
-  const mintInput = document.getElementById("mintInput");
+  const maxPerMint   = document.getElementById("maxPerMint");
+  const totalSupply  = document.getElementById("totalSupply");
+  const mintInput    = document.getElementById("mintInput");
 
   console.log("Price: " + price);
   console.log("Price Type: " + priceType);
 
   pricePerMint.innerText = `${price} ${priceType}`;
-  maxPerMint.innerText = `${info.deploymentConfig.tokensPerMint}`;
-  totalSupply.innerText = `${info.deploymentConfig.maxSupply}`;
+  maxPerMint.innerText   = `${info.deploymentConfig.tokensPerMint}`;
+  totalSupply.innerText  = `${info.deploymentConfig.maxSupply}`;
   mintInput.setAttribute("max", info.deploymentConfig.tokensPerMint);
 
   // MINT INPUT
   const mintIncrement = document.getElementById("mintIncrement");
   const mintDecrement = document.getElementById("mintDecrement");
-  const setQtyMax = document.getElementById("setQtyMax");
-  const min = mintInput.attributes.min.value || false;
-  const max = mintInput.attributes.max.value || false;
+  const setQtyMax     = document.getElementById("setQtyMax");
+  const min           = mintInput.attributes.min.value || false;
+  const max           = mintInput.attributes.max.value || false;
   mintDecrement.onclick = () => {
     let value = parseInt(mintInput.value) - 1 || 1;
     if(!min || value >= min) {
@@ -305,7 +312,7 @@ async function loadInfo() {
   mintInput.onchange = () => {
     setTotalPrice()
   };
-  mintInput.onkeyup = async (e) => {
+  mintInput.onkeyup  = async (e) => {
     if (e.keyCode === 13) {
       mint();
     }
@@ -315,14 +322,14 @@ async function loadInfo() {
 
 function setTotalPrice() {
 
-  const mintInput = document.getElementById("mintInput");
+  const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
   console.log("Mint Price: " + info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
 
-  const totalPrice = document.getElementById("totalPrice");
-  const mintButton = document.getElementById("mintButton");
+  const totalPrice    = document.getElementById("totalPrice");
+  const mintButton    = document.getElementById("mintButton");
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
     mintButton.disabled = true;
@@ -338,17 +345,17 @@ function setTotalPrice() {
     priceType = 'MATIC';
   }
 
-  const price = web3.utils.fromWei(totalPriceWei.toString(), 'ether');
+  const price          = web3.utils.fromWei(totalPriceWei.toString(), 'ether');
   totalPrice.innerText = `${price} ${priceType}`;
-  mintButton.disabled = false;
-  mintInput.disabled = false;
+  mintButton.disabled  = false;
+  mintInput.disabled   = false;
 }
 
 async function mint() {
 
-  const mintButton = document.getElementById("mintButton");
-  mintButton.disabled = true;
-  const spinner = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
+  const mintButton     = document.getElementById("mintButton");
+  mintButton.disabled  = true;
+  const spinner        = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
   mintButton.innerHTML = spinner;
 
   const amount = parseInt(document.getElementById("mintInput").value);
