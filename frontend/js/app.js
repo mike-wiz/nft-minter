@@ -6,7 +6,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   const welcomeH2  = document.getElementById("welcomeH2");
   const welcomeP   = document.getElementById("welcomeP");
 
-  const noMetamask = document.getElementById("noMetamask");
+  const noMetamask   = document.getElementById("noMetamask");
+  const noMetamaskH1 = document.getElementById("noMetamaskH1");
+  const noMetamaskH2 = document.getElementById("noMetamaskH2");
 
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
@@ -83,6 +85,7 @@ const updateConnectStatus = async () => {
       onboarding.startOnboarding();
     };
     noMetamask.classList.remove('hidden');
+    noMetamaskH2.innerText     = "Install MetaMask to See More!";
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
@@ -94,6 +97,8 @@ const updateConnectStatus = async () => {
   } else {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
+    noMetamask.classList.remove('hidden');
+    noMetamaskH2.innerText  = "Connect to MetaMask to See More!";
     onboardButton.onclick = async () => {
       await window.ethereum
         .request({
@@ -105,10 +110,10 @@ const updateConnectStatus = async () => {
           window.address = accts[0];
           accounts = accts;
           window.contract = new web3.eth.Contract(abi, contractAddress);
+          noMetamask.classList.add('hidden');
           loadInfo();
         });
     };
-
   }
 };
 
