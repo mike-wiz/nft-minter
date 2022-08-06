@@ -487,9 +487,7 @@ section {
 }
 
 .mint-btn {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
+  text-align: center;
   margin: auto;
 }
 
@@ -515,7 +513,9 @@ section {
 }
 
 .total-price-container p {
-  color: var(--accent-color);
+  font-size: .85rem;
+  font-weight: 800;
+  color: #FFF;
 }
 
 /* MINTED CONTAINER */
