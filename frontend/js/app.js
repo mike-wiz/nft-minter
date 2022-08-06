@@ -87,6 +87,7 @@ const updateConnectStatus = async () => {
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
     window.contract = new web3.eth.Contract(abi, contractAddress);
+    loadInfo();
   } else {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
@@ -103,8 +104,8 @@ const updateConnectStatus = async () => {
           window.contract = new web3.eth.Contract(abi, contractAddress);
         });
     };
+    loadInfo();
   }
-  loadInfo();
 };
 
 async function checkChain() {
