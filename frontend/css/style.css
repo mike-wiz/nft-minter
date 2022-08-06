@@ -251,7 +251,7 @@ header .logo img {
   box-shadow: var(--header-shadow);
   white-space: nowrap;
 }
-.btn:hover, .btn .active {
+.btn:hover {
   box-shadow: none;
   background: var(--accent-color);
   color: var(--primary);
@@ -272,6 +272,13 @@ header .logo img {
   border-radius: 4px;
   font-size: 1.2rem;
   padding: 1.5rem 3rem;
+}
+
+.btn .active {
+  box-shadow: none;
+  background: var(--accent-color);
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 /* MODAL */
