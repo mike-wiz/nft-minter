@@ -243,7 +243,7 @@ async function loadInfo() {
   else {
     //// NOT ACTIVE
     console.log("Sale Not Active Yet...");
-    startTime = window.info.runtimeConfig.presaleMintStart;
+    startTime = window.info.runtimeConfig.publicMintStart;
     // mainHeading.innerText  = h1_presale_coming_soon;
     // subHeading.innerText   = h2_presale_coming_soon;
     // mainText.innerText     = p_presale_coming_soon;
