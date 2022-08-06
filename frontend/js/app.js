@@ -2,9 +2,11 @@ let accounts;
 
 // METAMASK CONNECTION
 window.addEventListener("DOMContentLoaded", async () => {
-  const welcomeH1 = document.getElementById("welcomeH1");
-  const welcomeH2 = document.getElementById("welcomeH2");
-  const welcomeP  = document.getElementById("welcomeP");
+  const welcomeH1  = document.getElementById("welcomeH1");
+  const welcomeH2  = document.getElementById("welcomeH2");
+  const welcomeP   = document.getElementById("welcomeP");
+
+  const noMetamask = document.getElementById("noMetamask");
 
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
@@ -80,6 +82,7 @@ const updateConnectStatus = async () => {
       onboardButton.disabled   = true;
       onboarding.startOnboarding();
     };
+    noMetamask.classList.remove('hidden');
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;

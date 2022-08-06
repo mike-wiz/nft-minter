@@ -190,17 +190,7 @@ header .logo img {
   align-items: center;
 }
 
-/* NOT CONNECTED */
-.not-connected {
-  /* opacity: 0; */
-  transition: all 0.5s ease-in-out;
-}
-
-.show-not-connected {
-  opacity: 1;
-}
-
-.content h1, .not-connected h1 {
+.content h1 {
   font-size: 2rem;
   font-weight: 800;
   font-style: italic;
@@ -210,7 +200,7 @@ header .logo img {
   color: var(--primary);
 }
 
-.content h2, .not-connected h2 {
+.content h2 {
   font-size: 1.25rem;
   font-weight: 800;
   font-style: italic;
@@ -218,23 +208,20 @@ header .logo img {
   margin: 0 0 40px;
 }
 
-.content p, .not-connected p {
+.content p {
   font-size: 1rem;
   font-weight: 600;
   font-family: var(--font-secondary);
   line-height: 1.8;
 }
 
-.content b, .not-connected b {
+.content b {
   color: var(--primary);
 }
 
-/* .not-connected a {
-  text-decoration: none;
-  color: var(--accent-color);
-  font-size: 1.5rem;
-  font-weight: bold;
-} */
+#noMetamask {
+  padding: 0;
+}
 
 /* BUTTONS */
 
