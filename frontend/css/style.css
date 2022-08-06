@@ -274,7 +274,7 @@ header .logo img {
   padding: 1.5rem 3rem;
 }
 
-.btn .active {
+.active {
   box-shadow: none;
   background: var(--accent-color);
   color: var(--primary);
