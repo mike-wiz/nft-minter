@@ -313,6 +313,7 @@ function setTotalPrice() {
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
+  console.log("DeploymentConfig: " + info.deploymentConfig);
   console.log("Mint Price: " + info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
 
