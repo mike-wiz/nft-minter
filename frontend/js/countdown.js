@@ -12,10 +12,9 @@ function countdown() {
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     if (diff < 0) {
-      clockdiv.style.display = "none";
+      // clockdiv.style.display = "none";
+      clockdiv.innerHTML = "<h2 id='noMetamaskH2'>Refresh Page</h2>";
       clearInterval(countdownfunction);
-      location.reload();
-      return;
     } else {
       clockdiv.style.display = "block";
       clockdiv.querySelector(".days").innerHTML = days;
