@@ -230,7 +230,6 @@ header .logo img {
 /* BUTTONS */
 
 .btn {
-  min-width: 216px;
   display: inline-block;
   font-family: var(--font-secondary);
   font-weight: 800;
@@ -264,14 +263,12 @@ header .logo img {
   margin-right: 6px;
 }
 
-.wallet-btn {
-  margin-left: 2rem;
+.primaryBtn {
+  min-width: 216px;
 }
 
-.hero-btn {
-  border-radius: 4px;
-  font-size: 1.2rem;
-  padding: 1.5rem 3rem;
+.wallet-btn {
+  margin-left: 2rem;
 }
 
 .active {
