@@ -1,7 +1,7 @@
 //Countdown Timer
 function countdown() {
   const clockdiv = document.getElementById("countdown");
-  const countDownTime = clockdiv.getAttribute("data-date") * 1000
+  const countDownTime = clockdiv.getAttribute("data-date") * 1000;
 
   const countdownfunction = setInterval(function () {
     const now = new Date().getTime();
@@ -14,6 +14,7 @@ function countdown() {
     if (diff < 0) {
       clockdiv.style.display = "none";
       clearInterval(countdownfunction);
+      location.reload();
     } else {
       clockdiv.style.display = "block";
       clockdiv.querySelector(".days").innerHTML = days;
