@@ -73,21 +73,21 @@ const updateConnectStatus = async () => {
   const onboarding    = new MetaMaskOnboarding();
   const onboardButton = document.getElementById("connectWallet");
   // const notConnected  = document.querySelector('.not-connected');
-  // const spinner = document.getElementById("spinner");
+  const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
-    // METAMASK NOT INSTALLED
+    //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
     onboardButton.onclick = () => {
       onboardButton.innerText  = "Connecting...";
       onboardButton.disabled   = true;
       onboarding.startOnboarding();
-      // HIDE SPINNER
-      // spinner.classList.add('hidden');
+      //// HIDE SPINNER
+      spinner.classList.add('hidden');
       // notConnected.classList.remove('hidden');
       // notConnected.classList.add('show-not-connected');
     };
   } else if (accounts && accounts.length > 0) {
-    // CONNECTED TO METAMASK
+    //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
     window.address = accounts[0];
     onboardButton.disabled  = true;
@@ -95,14 +95,14 @@ const updateConnectStatus = async () => {
     // notConnected.classList.remove('show-not-connected');
     // notConnected.classList.add('hidden');
     //// SHOW SPINNER
-    // spinner.classList.remove('hidden');
+    spinner.classList.remove('hidden');
     window.contract = new web3.eth.Contract(abi, contractAddress);
     loadInfo();
   } else {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
     //// HIDE SPINNER
-    // spinner.classList.add('hidden');
+    spinner.classList.add('hidden');
     // notConnected.classList.remove('hidden');
     // notConnected.classList.add('show-not-connected');
     onboardButton.onclick = async () => {
@@ -115,7 +115,7 @@ const updateConnectStatus = async () => {
           // notConnected.classList.remove('show-not-connected');
           // notConnected.classList.add('hidden');
           //// SHOW SPINNER
-          // spinner.classList.remove('hidden');
+          spinner.classList.remove('hidden');
           onboardButton.disabled = true;
           window.address = accts[0];
           accounts = accts;
@@ -195,7 +195,7 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-  // const spinner = document.getElementById("spinner");
+  const spinner           = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
@@ -255,8 +255,8 @@ async function loadInfo() {
   clockdiv.setAttribute("data-date", startTime);
   countdown();
 
-  // HIDE SPINNER
-  // spinner.classList.add('hidden');
+  //// HIDE SPINNER
+  spinner.classList.add('hidden');
 
   // SHOW CARD
   // setTimeout(() => {
