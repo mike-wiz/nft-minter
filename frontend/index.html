@@ -224,7 +224,7 @@
       <i class="fas fa-times-circle close"></i>
       <div class="modal-content full">
         <h2>Mint NFT</h2>
-        <div id="mintContainer" class="mint-container hidden">
+        <div id="mintContainer" class="mint-container">
 
           <div class="info-container">
             <div>
@@ -242,7 +242,7 @@
           </div>
 
           <div class="mint-qty">
-            <span>
+            <div class="mint-qty-input">
               <button class="input-number-decrement btn" id="mintDecrement">–</button>
               <input
                 id="mintInput"
@@ -253,8 +253,8 @@
                 max="10"
               />
               <button class="input-number-increment btn" id="mintIncrement">+</button>
-            </span>
-            <!-- <button id="setQtyMax" class="btn">SET MAX</button> -->
+            </div>
+            <button id="setQtyMax" class="mint-max-btn btn active">SET MAX</button>
           </div>
 
           <div class="total-price-container">

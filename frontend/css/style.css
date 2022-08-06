@@ -474,21 +474,34 @@ section {
 }
 
 .mint-qty {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   padding: 1rem;
   background-color: var(--accent-color);
   border-radius: 5px;
 }
 
-.mint-qty > span {
-  display: flex;
+.mint-qty-input {
+  width: calc(100% - 136px);
+  display: block;
+  position: relative;
+  float: left;
+}
+.mint-qty-input .btn {
+  font-size: 1rem;
+  font-style: none
+}
+.mint-max-btn {
+  width: 100%;
+  max-width: 120px;
+  font-size: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+  float: right;
 }
 
 .mint-btn {
   text-align: center;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .input-number {
@@ -499,7 +512,6 @@ section {
   outline: none;
   background: #FFF;
 }
-
 .input-number,
 .input-number-decrement,
 .input-number-increment {
@@ -512,11 +524,29 @@ section {
   width: 100%;
   padding: 1rem 0 2rem;
 }
-
-.total-price-container p {
-  font-size: .85rem;
+.total-price-container h3 {
+  font-size: 1.25rem;
   font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
   color: #FFF;
+}
+.total-price-container p {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 0 var(--accent-color);
+  color: var(--primary);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 /* MINTED CONTAINER */
