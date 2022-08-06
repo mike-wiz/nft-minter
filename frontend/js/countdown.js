@@ -14,6 +14,8 @@ function countdown() {
     if (diff < 0) {
       clockdiv.style.display = "none";
       clearInterval(countdownfunction);
+      location.reload();
+      return;
     } else {
       clockdiv.style.display = "block";
       clockdiv.querySelector(".days").innerHTML = days;
