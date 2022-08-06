@@ -2,6 +2,9 @@ let accounts;
 
 // METAMASK CONNECTION
 window.addEventListener("DOMContentLoaded", async () => {
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    modal(document.getElementById("modalMobile"));
+  }
   const welcomeH1  = document.getElementById("welcomeH1");
   const welcomeH2  = document.getElementById("welcomeH2");
   const welcomeP   = document.getElementById("welcomeP");
