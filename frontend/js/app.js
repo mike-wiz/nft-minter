@@ -72,39 +72,24 @@ async function modal(modal) {
 const updateConnectStatus = async () => {
   const onboarding    = new MetaMaskOnboarding();
   const onboardButton = document.getElementById("connectWallet");
-  // const notConnected  = document.querySelector('.not-connected');
-  const spinner = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
-    // METAMASK NOT INSTALLED
+    //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
     onboardButton.onclick = () => {
       onboardButton.innerText  = "Connecting...";
       onboardButton.disabled   = true;
       onboarding.startOnboarding();
-      // HIDE SPINNER
-      spinner.classList.add('hidden');
-      // notConnected.classList.remove('hidden');
-      // notConnected.classList.add('show-not-connected');
     };
   } else if (accounts && accounts.length > 0) {
-    // CONNECTED TO METAMASK
+    //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
     window.address = accounts[0];
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
-    // notConnected.classList.remove('show-not-connected');
-    // notConnected.classList.add('hidden');
-    //// SHOW SPINNER
-    spinner.classList.remove('hidden');
     window.contract = new web3.eth.Contract(abi, contractAddress);
-    loadInfo();
   } else {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
-    //// HIDE SPINNER
-    spinner.classList.add('hidden');
-    // notConnected.classList.remove('hidden');
-    // notConnected.classList.add('show-not-connected');
     onboardButton.onclick = async () => {
       await window.ethereum
         .request({
@@ -112,18 +97,14 @@ const updateConnectStatus = async () => {
         })
         .then(function (accts) {
           onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
-          // notConnected.classList.remove('show-not-connected');
-          // notConnected.classList.add('hidden');
-          //// SHOW SPINNER
-          spinner.classList.remove('hidden');
           onboardButton.disabled = true;
           window.address = accts[0];
           accounts = accts;
           window.contract = new web3.eth.Contract(abi, contractAddress);
-          loadInfo();
         });
     };
   }
+  loadInfo();
 };
 
 async function checkChain() {
@@ -187,23 +168,17 @@ async function loadInfo() {
   console.log("INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
-  // const mainHeading       = document.getElementById("mainHeading");
-  // const subHeading        = document.getElementById("subHeading");
-  // const mainText          = document.getElementById("mainText");
-  // const actionButton      = document.getElementById("actionButton");
   const mintActions       = document.getElementById("mintActions");
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-  // const spinner = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
     //// PUBLIC ACTIVE
+
     console.log("Sale Active!");
-    // mainHeading.innerText = h1_public_mint;
-    // mainText.innerText    = p_public_mint;
-    // actionButton.classList.add('hidden');
+
     mintButton.innerText  = button_public_mint;
     mintActions.classList.remove('hidden');
     mintCollection.classList.remove('hidden');
@@ -244,10 +219,6 @@ async function loadInfo() {
     //// NOT ACTIVE
     console.log("Sale Not Active Yet...");
     startTime = window.info.runtimeConfig.publicMintStart;
-    // mainHeading.innerText  = h1_presale_coming_soon;
-    // subHeading.innerText   = h2_presale_coming_soon;
-    // mainText.innerText     = p_presale_coming_soon;
-    // actionButton.innerText = button_presale_coming_soon;
   }
 
   console.log("Start Time: " + startTime);
@@ -255,14 +226,9 @@ async function loadInfo() {
   clockdiv.setAttribute("data-date", startTime);
   countdown();
 
-  // HIDE SPINNER
-  // spinner.classList.add('hidden');
-
-  // SHOW CARD
-  // setTimeout(() => {
-    const countdownCard = document.querySelector('.countdown');
-    countdownCard.classList.add('show-card');
-  // }, 1000);
+  //// SHOW CARD
+  const countdownCard = document.querySelector('.countdown');
+  countdownCard.classList.add('show-card');
 
   let priceType = '';
   if(chain === 'rinkeby' || chain === 'ethereum') {
