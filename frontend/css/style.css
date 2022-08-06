@@ -359,6 +359,7 @@ section {
 #countdown {
   display: none;
   text-align: center;
+  padding-top: 0;
 }
 
 .countdown {
