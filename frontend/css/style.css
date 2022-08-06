@@ -251,7 +251,7 @@ header .logo img {
   box-shadow: var(--header-shadow);
   white-space: nowrap;
 }
-.btn:hover {
+.btn:hover, .btn .active {
   box-shadow: none;
   background: var(--accent-color);
   color: var(--primary);

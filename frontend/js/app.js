@@ -89,10 +89,12 @@ const updateConnectStatus = async () => {
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
+    onboardButton.classList.add('active');
     window.address = accounts[0];
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
     window.contract = new web3.eth.Contract(abi, contractAddress);
+    noMetamask.classList.add('hidden');
     loadInfo();
   } else {
     //// CONNECT TO METAMASK
@@ -106,6 +108,7 @@ const updateConnectStatus = async () => {
         })
         .then(function (accts) {
           onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
+          onboardButton.classList.add('active');
           onboardButton.disabled = true;
           window.address = accts[0];
           accounts = accts;
