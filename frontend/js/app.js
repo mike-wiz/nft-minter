@@ -198,7 +198,6 @@ async function loadInfo() {
   let startTime = "";
   if (publicMintActive) {
     //// PUBLIC ACTIVE
-
     console.log("Sale Active!");
 
     mintButton.innerText  = button_public_mint;
@@ -207,36 +206,6 @@ async function loadInfo() {
     mintContainer.classList.remove('hidden');
     setTotalPrice();
   }
-  // else if (presaleMintActive) {
-  //   //// PRESALE ACTIVE
-  //   console.log("Pre-sale Active!");
-  //   startTime = window.info.runtimeConfig.publicMintStart;
-  //   // mainHeading.innerText = h1_presale_mint;
-  //   // subHeading.innerText  = h2_presale_mint;
-  //   //
-  //   // try {
-  //   //   // CHECK IF WHITELISTED
-  //   //   const merkleData = await fetch(
-  //   //     `/.netlify/functions/merkleProof/?wallet=${window.address}&chain=${chain}&contract=${contractAddress}`
-  //   //   );
-  //   //   const merkleJson  = await merkleData.json();
-  //   //   const whitelisted = await contract.methods.isWhitelisted(window.address, merkleJson).call();
-  //   //   if(!whitelisted) {
-  //   //     mainText.innerText     = p_presale_mint_not_whitelisted;
-  //   //     actionButton.innerText = button_presale_mint_not_whitelisted;
-  //   //   } else {
-  //   //     mainText.innerText     = p_presale_mint_whitelisted;
-  //   //     actionButton.classList.add('hidden');
-  //   //     mintButton.innerText   = button_presale_mint_whitelisted;
-  //   //     mintContainer.classList.remove('hidden');
-  //   //   }
-  //   // } catch(e) {
-  //   //   console.log(e);
-  //   //   mainText.innerText     = p_presale_mint_already_minted;
-  //   //   actionButton.innerText = button_presale_already_minted;
-  //   // }
-  //   // setTotalPrice();
-  // }
   else {
     //// NOT ACTIVE
     console.log("Sale Not Active Yet...");
@@ -313,8 +282,9 @@ function setTotalPrice() {
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
+  console.log("Info: " + info);
   console.log("DeploymentConfig: " + info.deploymentConfig);
-  console.log("Mint Price: " + info.deploymentConfig.mintPrice);
+  console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
   console.log("Input Value: " + mintInputValue);
 
   const totalPrice    = document.getElementById("totalPrice");
