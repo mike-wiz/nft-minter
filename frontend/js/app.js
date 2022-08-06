@@ -187,6 +187,8 @@ async function loadInfo() {
   window.info             = await window.contract.methods.getInfo().call();
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
+  console.log("Contract: " + window.contract);
+  console.log("getInfo(): " + window.contract.methods.getInfo());
   console.log("INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
