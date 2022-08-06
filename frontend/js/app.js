@@ -29,7 +29,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeP.innerHTML  = welcome_p;
 
 
-  console.log("Web3: " + web3.version.api);
+  console.log(window);
+  console.log(window.ethereum);
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
