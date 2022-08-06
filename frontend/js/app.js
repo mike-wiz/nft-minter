@@ -29,8 +29,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeP.innerHTML  = welcome_p;
 
 
-  console.log(window);
-  console.log(window.ethereum);
+  console.log("W: " + window);
+  console.log("W ETH: " + window.ethereum);
+  console.log("Web3: " + window.web3);
+  console.log("Web3 Provider: " + window.web3.currentProvider);
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -38,6 +40,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   } else if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
   }
+
+  console.log("Web3 #2: " + window.web3);
 
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
