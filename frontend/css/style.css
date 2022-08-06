@@ -291,7 +291,7 @@ header .logo img {
   transition: .3s ease-in-out;
   z-index: 999;
 }
-.modal i {
+.modal .close {
   font-size: 1.5rem;
   position: absolute;
   top: 10px;
@@ -299,7 +299,7 @@ header .logo img {
   color: var(--primary);
   transition: .2s ease-in-out;
 }
-.modal i:hover {
+.modal .close:hover {
   cursor: pointer;
   color: #4D4D4D;
 }
@@ -333,6 +333,9 @@ header .logo img {
   text-shadow: 2px 2px 0 var(--accent-color);
   margin: 0 0 16px;
   color: var(--primary);
+}
+#modalMobile i {
+  margin-right: 8px;
 }
 #modalMobile p {
   font-size: 1rem;
