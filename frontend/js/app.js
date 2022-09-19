@@ -287,7 +287,7 @@ async function loadInfo() {
   mintButton.onclick = mint;
 }
 
-async function setTotalPrice() {
+function setTotalPrice() {
 
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
@@ -296,7 +296,7 @@ async function setTotalPrice() {
   console.log("DeploymentConfig: " + info.deploymentConfig);
   // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
   console.log("Mint Price (Info): " + info.mintPrice);
-  console.log("Mint Price DeploymentConfig: " + info.deploymentConfig.mintPrice);
+  console.log("Mint Price DeploymentConfig: " + window.info.deploymentConfig.mintPrice);
   console.log("Mint Price (No BigInt): " + info[10]);
   console.log("Mint Price: " + BigInt(info[10]));
   console.log("Input Value: " + mintInputValue);
