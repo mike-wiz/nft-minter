@@ -295,6 +295,8 @@ function setTotalPrice() {
   console.log("Info: " + info);
   console.log("DeploymentConfig: " + info.deploymentConfig);
   // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
+  console.log("Mint Price (Info): " + info.mintPrice);
+  console.log("Mint Price DeploymentConfig: " + info.deploymentConfig.mintPrice);
   console.log("Mint Price (No BigInt): " + info[10]);
   console.log("Mint Price: " + BigInt(info[10]));
   console.log("Input Value: " + mintInputValue);
@@ -303,8 +305,8 @@ function setTotalPrice() {
   const mintButton    = document.getElementById("mintButton");
   if(mintInputValue < 1 || mintInputValue > info.deploymentConfig.tokensPerMint) {
     totalPrice.innerText = 'INVALID QUANTITY';
-    mintButton.disabled = true;
-    mintInput.disabled = true;
+    mintButton.disabled  = true;
+    mintInput.disabled   = true;
     return;
   }
   const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
