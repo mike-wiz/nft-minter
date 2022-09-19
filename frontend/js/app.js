@@ -295,6 +295,7 @@ function setTotalPrice() {
   console.log("Info: " + info);
   console.log("DeploymentConfig: " + info.deploymentConfig);
   // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
+  console.log("Mint Price (No BigInt): " + info[10]);
   console.log("Mint Price: " + BigInt(info[10]));
   console.log("Input Value: " + mintInputValue);
 
