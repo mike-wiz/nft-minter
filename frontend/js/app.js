@@ -197,7 +197,7 @@ async function loadInfo() {
   const presaleMintActive = await contract.methods.presaleActive().call();
   console.log("Contract: " + window.contract);
   console.log("getInfo(): " + window.contract.methods.getInfo());
-  console.log("INFO: " + window.info);
+  console.log("Window INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
   const mintActions       = document.getElementById("mintActions");
@@ -272,7 +272,7 @@ async function loadInfo() {
       setTotalPrice()
     }
   };
-  setQtyMax.onclick = () => {
+  setQtyMax.onclick  = () => {
     mintInput.value = max;
     setTotalPrice()
   };
@@ -287,7 +287,7 @@ async function loadInfo() {
   mintButton.onclick = mint;
 }
 
-function setTotalPrice() {
+async function setTotalPrice() {
 
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);

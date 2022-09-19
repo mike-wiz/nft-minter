@@ -1,15 +1,15 @@
 require('dotenv').config();
-const basePath = process.cwd();
-const fs = require("fs");
-const { MODE } = require(`${basePath}/constants/blend_mode.js`);
+const basePath    = process.cwd();
+const fs          = require("fs");
+const { MODE }    = require(`${basePath}/constants/blend_mode.js`);
 const { NETWORK } = require(`${basePath}/constants/network.js`);
 
-const network = NETWORK.eth;
+const network     = NETWORK.eth;
 
 // General metadata for Ethereum
-const namePrefix = "MakePaul";
+const namePrefix  = "MakePaul";
 const description = "A collection of 10,000 NFTs inspired by your favorite celebrity-athlete, Jake Paul!";
-const baseUri = "ipfs://NewUriToReplace"; // This will be replaced automatically
+const baseUri     = "ipfs://NewUriToReplace"; // This will be replaced automatically
 
 const layerConfigurations = [
   {
