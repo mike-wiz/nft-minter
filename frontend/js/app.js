@@ -296,13 +296,13 @@ function setTotalPrice() {
   console.log("Window Info DeploymentConfig: " + window.info.deploymentConfig);
   console.log("=================================================================");
   console.log("Info: " + info);
-  console.log("Info DeploymentConfig: " + info.deploymentConfig);
+  console.log("Info DeploymentConfig: " + window.info.deploymentConfig);
   // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
   // console.log("Mint Price (Info): " + info.mintPrice);
   // console.log("Mint Price DeploymentConfig: " + window.info.deploymentConfig.mintPrice);
   // console.log("Mint Price (No BigInt): " + info[10]);
   // console.log("Mint Price: " + BigInt(info[10]));
-  console.log("Info DeploymentConfig Mint Price: " + info.deploymentConfig.mintPrice);
+  console.log("Info DeploymentConfig Mint Price: " + window.info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
 
   const totalPrice    = document.getElementById("totalPrice");
