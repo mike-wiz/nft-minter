@@ -292,6 +292,9 @@ function setTotalPrice() {
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
+  console.log("Window Info: " + window.info);
+  console.log("Window Info DeploymentConfig: " + window.info.deploymentConfig);
+  console.log("=================================================================");
   console.log("Info: " + info);
   console.log("Info DeploymentConfig: " + info.deploymentConfig);
   // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
