@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
   console.log("W: " + window);
-  console.log(JSON.stringify(window));
+  // console.log(JSON.stringify(window));
   console.log("W ETH: " + window.ethereum);
   console.log(JSON.stringify(window.ethereum));
   console.log("Web3: " + window.web3);
