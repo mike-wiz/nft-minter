@@ -82,11 +82,9 @@ async function modal(modal) {
 }
 
 const updateConnectStatus = async () => {
-  const spinner        = document.getElementById("spinner");
   const onboarding     = new MetaMaskOnboarding();
   const onboardButton  = document.getElementById("connectWallet");
   const onboardButton2 = document.getElementById("connectWallet2");
-  // spinner.remove();
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
@@ -102,7 +100,7 @@ const updateConnectStatus = async () => {
       onboarding.startOnboarding();
     };
     noMetamask.classList.remove('hidden');
-    noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Install MetaMask to Unlock Full Access";
+    noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Install MetaMask to Get Started!";
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
@@ -202,7 +200,7 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-  // const spinner           = document.getElementById("spinner");
+  const spinner           = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
@@ -210,7 +208,6 @@ async function loadInfo() {
 
     // console.log("Sale Active!");
 
-    spinner.remove();
     mintButton.innerText  = button_public_mint;
     mintActions.classList.remove('hidden');
     mintCollection.classList.remove('hidden');
@@ -222,9 +219,10 @@ async function loadInfo() {
 
     // console.log("Sale Not Active Yet...");
 
-    spinner.remove();
     startTime = window.info.runtimeConfig.publicMintStart;
   }
+
+  spinner.remove();
 
   // Set Public Sale Countdown
   const clockdiv  = document.getElementById("countdown");
