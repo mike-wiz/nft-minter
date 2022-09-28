@@ -292,14 +292,14 @@ function setTotalPrice() {
   // console.log("Window Info DeploymentConfig:");
   // console.log(window.info.deploymentConfig);
   // console.log("=================================================================");
-  console.log("Info:");
-  console.log(info);
-  console.log("=================================================================");
+  // console.log("Info:");
+  // console.log(info);
+  // console.log("=================================================================");
   // console.log("Info DeploymentConfig: ");
   // console.log(info.deploymentConfig);
   // console.log("=================================================================");
-  console.log("Window Contract Public Mint Price:");
-  console.log(window.contract.methods.publicMintPrice().call());
+  // console.log("Window Contract Public Mint Price:");
+  // console.log(window.contract.methods.publicMintPrice().call());
   // console.log("=================================================================");
   // console.log("Input Value: " + mintInputValue);
 
@@ -331,11 +331,13 @@ async function mint() {
 
   const mintButton     = document.getElementById("mintButton");
   mintButton.disabled  = true;
-  const spinner        = '<div class="dot-elastic"></div><span>Waiting for transaction...</span>';
+  // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
+  const spinner        = "<span>Waiting for transaction...</span>";
   mintButton.innerHTML = spinner;
 
   const amount = parseInt(document.getElementById("mintInput").value);
-  const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
+  // const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
+  const value = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(amount);
   const publicMintActive = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
 
