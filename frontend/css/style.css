@@ -694,6 +694,14 @@ input[type=number] {
     padding-right: 0;
   }
 }
+@media all and (max-width: 580px) {
+  .custom-shape-divider-bottom svg {
+    height: 40px;
+  }
+  .custom-shape-divider-top svg {
+    height: 40px;
+  }
+}
 @media all and (max-width: 480px) {
   .content.right {
     padding: 60px 16px 180px;
