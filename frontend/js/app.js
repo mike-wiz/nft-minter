@@ -86,7 +86,6 @@ const updateConnectStatus = async () => {
   const onboarding     = new MetaMaskOnboarding();
   const onboardButton  = document.getElementById("connectWallet");
   const onboardButton2 = document.getElementById("connectWallet2");
-  const spinner        = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText     = "Install MetaMask";
@@ -155,6 +154,7 @@ const updateConnectStatus = async () => {
     };
   }
   // Remove Spinner
+  const spinner        = document.getElementById("spinner");
   spinner.remove();
 };
 
