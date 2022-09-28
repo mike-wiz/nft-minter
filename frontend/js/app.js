@@ -300,8 +300,8 @@ function setTotalPrice() {
   // console.log("Info DeploymentConfig: ");
   // console.log(info.deploymentConfig);
   // console.log("=================================================================");
-  console.log("Info Public Mint Price:");
-  console.log(info.publicMintPrice());
+  console.log("Window Contract Public Mint Price:");
+  console.log(window.contract.methods.publicMintPrice());
   // console.log("=================================================================");
   // console.log("Input Value: " + mintInputValue);
 
