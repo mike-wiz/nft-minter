@@ -55,11 +55,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
   splide.mount();
 
-  updateConnectStatus();
+  Connect MetaMask();
   if (MetaMaskOnboarding.isMetaMaskInstalled()) {
     window.ethereum.on("accountsChanged", (newAccounts) => {
       accounts = newAccounts;
-      updateConnectStatus();
+      Connect MetaMask();
     });
   }
 });
@@ -82,10 +82,12 @@ async function modal(modal) {
 }
 
 const updateConnectStatus = async () => {
+  const spinner        = document.getElementById("spinner");
   const onboarding     = new MetaMaskOnboarding();
   const onboardButton  = document.getElementById("connectWallet");
   const onboardButton2 = document.getElementById("connectWallet2");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+    spinner.remove();
     //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
     onboardButton.onclick = () => {
@@ -102,6 +104,7 @@ const updateConnectStatus = async () => {
     noMetamask.classList.remove('hidden');
     noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Install MetaMask to Get Started!";
   } else if (accounts && accounts.length > 0) {
+    spinner.remove();
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
     onboardButton.classList.add('active');
@@ -112,6 +115,7 @@ const updateConnectStatus = async () => {
     noMetamask.classList.add('hidden');
     loadInfo();
   } else {
+    spinner.remove();
     //// CONNECT TO METAMASK
     onboardButton.innerText  = "Connect MetaMask";
     onboardButton2.innerText = "Connect MetaMask";
@@ -125,10 +129,27 @@ const updateConnectStatus = async () => {
         .then(function (accts) {
           onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
           onboardButton.classList.add('active');
-          onboardButton.disabled = true;
-          window.address = accts[0];
-          accounts = accts;
-          window.contract = new web3.eth.Contract(abi, contractAddress);
+          onboardButton.disabled  = true;
+          window.address          = accts[0];
+          accounts                = accts;
+          window.contract         = new web3.eth.Contract(abi, contractAddress);
+          location.reload();
+          noMetamask.classList.add('hidden');
+          loadInfo();
+        });
+    };
+    onboardButton2.onclick   = async () => {
+      await window.ethereum
+        .request({
+          method: "eth_requestAccounts",
+        })
+        .then(function (accts) {
+          onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
+          onboardButton.classList.add('active');
+          onboardButton.disabled  = true;
+          window.address          = accts[0];
+          accounts                = accts;
+          window.contract         = new web3.eth.Contract(abi, contractAddress);
           location.reload();
           noMetamask.classList.add('hidden');
           loadInfo();
@@ -200,7 +221,6 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-  const spinner           = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
@@ -221,8 +241,6 @@ async function loadInfo() {
 
     startTime = window.info.runtimeConfig.publicMintStart;
   }
-
-  spinner.remove();
 
   // Set Public Sale Countdown
   const clockdiv  = document.getElementById("countdown");
