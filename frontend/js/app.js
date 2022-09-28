@@ -55,11 +55,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   });
   splide.mount();
 
-  Connect MetaMask();
+  updateConnectStatus();
   if (MetaMaskOnboarding.isMetaMaskInstalled()) {
     window.ethereum.on("accountsChanged", (newAccounts) => {
       accounts = newAccounts;
-      Connect MetaMask();
+      updateConnectStatus();
     });
   }
 });
