@@ -317,6 +317,7 @@ async function mint() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
 
+  const mintHeader        = document.getElementById("mintHeader");
   const mintContainer     = document.getElementById("mintContainer");
   const mint_failed_text  = "Failed to Mint NFT";
   const mint_failed_btn   = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
@@ -346,8 +347,8 @@ async function mint() {
 
         console.log("Failed to Mint.");
 
-        mintContainer.parentElement.firstChild.innerHTML = mint_failed_text;
-        mintContainer.innterHTML                         = mint_failed_btn;
+        mintHeader.innerHTML     = mint_failed_text;
+        mintContainer.innterHTML = mint_failed_btn;
       }
 
     } catch(e) {
@@ -356,12 +357,11 @@ async function mint() {
 
       // window.location.reload();
       console.log(mintButton);
-      console.log(mintContainer.parentElement.firstChild);
-      console.log(mintContainer.innterHTML);
-      console.log(mintContainer.previousSibling);
+      console.log(mintHeader);
+      console.log(mintContainer);
 
-      mintContainer.parentElement.firstChild.innerHTML = mint_failed_text;
-      mintContainer.innterHTML                         = mint_failed_btn;
+      mintHeader.innerHTML     = mint_failed_text;
+      mintContainer.innterHTML = mint_failed_btn;
 
       // const mainText       = document.getElementById("mainText");
       // mainText.innerText   = mint_failed;
