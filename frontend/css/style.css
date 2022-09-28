@@ -122,8 +122,8 @@ header .logo img {
 
 .top {
   width: 100%;
-  height: 100vh;
-  min-height: 530px;
+  height: auto;
+  min-height: 100vh;
   display: block;
   position: relative;
   background: #000;
@@ -617,6 +617,12 @@ input[type=number] {
 }
 
 /* MEDIA QUERIES */
+
+@media all and (max-height: 580px) {
+  .top {
+    min-height: 580px;
+  }
+}
 
 @media all and (max-width: 920px) {
   .top {
