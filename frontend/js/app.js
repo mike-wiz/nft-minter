@@ -291,7 +291,7 @@ function setTotalPrice() {
   console.log("=================================================================");
   console.log("Info: " + info);
   console.log(info);
-  console.log(JSON.parse(info));
+  console.log(info.deploymentConfig);
   console.log("Info DeploymentConfig: " + window.info.deploymentConfig);
   console.log("Info DeploymentConfig Mint Price: " + window.info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
