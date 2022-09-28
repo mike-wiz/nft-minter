@@ -37,10 +37,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeP.innerHTML  = welcome_p;
 
 
-  debug1.innerHTML = "W: " + window;
-  debug2.innerHTML = "W ETH: " + window.ethereum;
-  debug3.innerHTML = "Web3: " + window.web3;
-  debug4.innerHTML = "Web3 Provider: " + window.web3.currentProvider;
+  debug1.innerHTML = "W: " + Object.values(window);
+  debug2.innerHTML = "W ETH: " + Object.values(window.ethereum);
+  debug3.innerHTML = "Web3: " + Object.values(window.web3);
+  debug4.innerHTML = "Web3 Provider: " + Object.values(window.web3.currentProvider);
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -49,7 +49,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     window.web3 = new Web3(window.web3.currentProvider);
   }
 
-  debug5.innerHTML = "Web3 #2: " + window.web3;
+  debug5.innerHTML = "Web3 #2: " + Object.values(window.web3);
 
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
@@ -205,13 +205,13 @@ async function loadInfo() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
 
-  debug6.innerHTML = "Contract: " + window.contract;
-  debug7.innerHTML = "getInfo(): " + window.contract.methods;
+  debug6.innerHTML = "Contract: " + Object.values(window.contract);
+  debug7.innerHTML = "getInfo(): " + Object.values(window.contract.methods);
 
   console.log("Window INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
-  
+
   const mintActions       = document.getElementById("mintActions");
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
