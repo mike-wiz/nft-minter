@@ -190,7 +190,7 @@ async function loadInfo() {
   const presaleMintActive = await contract.methods.presaleActive().call();
 
   console.log("Contract: " + Object.values(window.contract));
-  console.log("Window INFO: " + window.info);
+  console.log(window.contract);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
 
@@ -286,14 +286,21 @@ function setTotalPrice() {
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
-  console.log("Window Info: " + window.info);
-  console.log("Window Info DeploymentConfig: " + window.info.deploymentConfig);
+  console.log("Window Info:");
+  console.log(window.info);
   console.log("=================================================================");
-  console.log("Info: " + info);
+  console.log("Window Info DeploymentConfig:");
+  console.log(window.info.deploymentConfig);
+  console.log("=================================================================");
+  console.log("Info:");
   console.log(info);
+  console.log("=================================================================");
+  console.log("Info DeploymentConfig: ");
   console.log(info.deploymentConfig);
-  console.log("Info DeploymentConfig: " + window.info.deploymentConfig);
-  console.log("Info DeploymentConfig Mint Price: " + window.info.deploymentConfig.mintPrice);
+  console.log("=================================================================");
+  console.log("Info DeploymentConfig Mint Price:");
+  console.log(window.info.deploymentConfig.mintPrice);
+  console.log("=================================================================");
   console.log("Input Value: " + mintInputValue);
 
   const totalPrice    = document.getElementById("totalPrice");
