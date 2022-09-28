@@ -305,9 +305,19 @@ function setTotalPrice() {
 
 async function mint() {
 
+  const mintHeader         = document.getElementById("mintHeader");
+  const mintContainer      = document.getElementById("mintContainer");
+
   const mintButton     = document.getElementById("mintButton");
   mintButton.disabled  = true;
   // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
+  document.querySelector('.info-container').remove();
+  document.querySelector('.mint-qty').remove();
+  document.querySelector('.total-price-container').remove();
+
+  mintHeader.innerHTML     = "Mint NFT Pending... ";
+  mintContainer.innerHTML  = "<div class='dot-elastic'></div>";
+
   const spinner        = "<span>Waiting for transaction...</span>";
   mintButton.innerHTML = spinner;
 
@@ -317,9 +327,8 @@ async function mint() {
   const publicMintActive   = await contract.methods.mintingActive().call();
   const presaleMintActive  = await contract.methods.presaleActive().call();
 
-  const mintHeader         = document.getElementById("mintHeader");
-  const mintContainer      = document.getElementById("mintContainer");
-  const mint_success_text  = "Minted Successfully!";
+
+  const mint_success_text  = "NFT Minted Successfully!";
   const mint_failed_text   = "Failed to Mint NFT";
   const mint_failed_btn    = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
@@ -336,7 +345,7 @@ async function mint() {
         // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
 
         mintHeader.innerHTML     = mint_success_text;
-        mintContainer.innerHTML  = "<h3>Welcome to #Team10k!</h3><br><br><h4>Transaction Hash: " + mintTransaction.transactionHash + "</h4>";
+        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "'></div>";
 
         if (chain === 'rinkeby') {
           const url = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
