@@ -311,12 +311,12 @@ async function mint() {
   const mintButton     = document.getElementById("mintButton");
   mintButton.disabled  = true;
   // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
-  document.querySelector('.info-container').remove();
-  document.querySelector('.mint-qty').remove();
-  document.querySelector('.total-price-container').remove();
+  document.querySelector('.info-container').style.display = "none";
+  document.querySelector('.mint-qty').style.display = "none";
+  document.querySelector('.total-price-container').style.display = "none";
 
   mintHeader.innerHTML     = "Mint NFT Pending... ";
-  mintContainer.innerHTML  = "<div class='dot-elastic'></div>";
+  mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
 
   const spinner        = "<span>Waiting for transaction...</span>";
   mintButton.innerHTML = spinner;
