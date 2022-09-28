@@ -354,7 +354,7 @@ async function mint() {
 
       // console.log(e);
 
-      window.location.reload();
+      // window.location.reload();
 
       mintContainer.parentElement.firstChild.innerHTML = mint_failed_text;
       mintContainer.innterHTML                         = mint_failed_btn;
