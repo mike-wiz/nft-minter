@@ -201,7 +201,7 @@ async function loadInfo() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
   console.log("Contract: " + window.contract);
-  var str = JSON.stringify(window.contract)
+  var str = JSON.stringify(window.contract);
   console.log(str);
   console.log("getInfo(): " + window.contract.methods);
   // console.log(JSON.stringify(window.contract.methods.getInfo()));
