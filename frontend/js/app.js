@@ -355,6 +355,7 @@ async function mint() {
       // console.log(e);
 
       // window.location.reload();
+      console.log(mintButton);
       console.log(mintContainer.parentElement.firstChild);
       console.log(mintContainer.innterHTML);
       console.log(mintContainer.previousSibling);
