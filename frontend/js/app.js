@@ -214,7 +214,7 @@ async function loadInfo() {
     startTime = window.info.runtimeConfig.publicMintStart;
   }
 
-  spinner.remove();
+  // spinner.remove();
 
   const clockdiv = document.getElementById("countdown");
   clockdiv.classList.remove('hidden');
