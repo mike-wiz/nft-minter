@@ -82,14 +82,23 @@ async function modal(modal) {
 }
 
 const updateConnectStatus = async () => {
-  const onboarding    = new MetaMaskOnboarding();
-  const onboardButton = document.getElementById("connectWallet");
+  const spinner        = document.getElementById("spinner");
+  const onboarding     = new MetaMaskOnboarding();
+  const onboardButton  = document.getElementById("connectWallet");
+  const onboardButton2 = document.getElementById("connectWallet2");
+  spinner.remove();
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
     onboardButton.onclick = () => {
       onboardButton.innerText  = "Connecting...";
       onboardButton.disabled   = true;
+      onboarding.startOnboarding();
+    };
+    onboardButton2.innerText    = "Install MetaMask";
+    onboardButton2.onclick = () => {
+      onboardButton2.innerText  = "Connecting...";
+      onboardButton2.disabled   = true;
       onboarding.startOnboarding();
     };
     noMetamask.classList.remove('hidden');
@@ -107,6 +116,7 @@ const updateConnectStatus = async () => {
   } else {
     //// CONNECT TO METAMASK
     onboardButton.innerText = "Connect MetaMask";
+    onboardButton2.innerText = "Connect MetaMask";
     noMetamask.classList.remove('hidden');
     noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Connect MetaMask to Unlock Full Access";
     onboardButton.onclick = async () => {
@@ -216,12 +226,18 @@ async function loadInfo() {
     startTime = window.info.runtimeConfig.publicMintStart;
   }
 
-  const clockdiv = document.getElementById("countdown");
+  // Set Public Sale Countdown
+  const clockdiv  = document.getElementById("countdown");
   clockdiv.classList.remove('hidden');
   clockdiv.setAttribute("data-date", startTime);
-  countdown();
+  countdown(clockdiv);
 
-  //// SHOW CARD
+  // Set Reveal Date Countdown
+  const clockdiv2 = document.getElementById("countdown2");
+  clockdiv2.classList.remove('hidden');
+  countdown(clockdiv2);
+
+  // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
   countdownCard.classList.add('show-card');
 
