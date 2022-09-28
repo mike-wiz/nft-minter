@@ -122,8 +122,8 @@ header .logo img {
 
 .top {
   width: 100%;
-  height: auto;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 530px;
   display: block;
   position: relative;
   background: #000;
@@ -618,6 +618,12 @@ input[type=number] {
 
 /* MEDIA QUERIES */
 
+@media all and (max-width: 920px) {
+  .top {
+    height: auto;
+    min-height: 100vh;
+  }
+}
 @media all and (max-width: 768px) {
   .menu {
     gap: 1rem;
