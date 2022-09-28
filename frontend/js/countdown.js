@@ -1,6 +1,6 @@
 //Countdown Timer
-function countdown() {
-  const clockdiv = document.getElementById("countdown");
+function countdown(clockdiv) {
+  // const clockdiv = document.getElementById("countdown");
   const countDownTime = clockdiv.getAttribute("data-date") * 1000;
 
   const countdownfunction = setInterval(function () {
