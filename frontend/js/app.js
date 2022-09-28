@@ -356,42 +356,4 @@ async function mint() {
       // mintButton.disabled  = false;
     }
   }
-  // else if (presaleMintActive) {
-  //   // PRE-SALE MINTING
-  //   try {
-  //     const merkleData = await fetch(
-  //       `/.netlify/functions/merkleProof/?wallet=${window.address}&chain=${chain}&contract=${contractAddress}`
-  //     );
-  //     const merkleJson = await merkleData.json();
-  //     const presaleMintTransaction = await contract.methods
-  //       .presaleMint(amount, merkleJson)
-  //       .send({ from: window.address, value: value.toString() });
-  //     if(presaleMintTransaction) {
-  //       if(chain === 'rinkeby') {
-  //         const url = `https://rinkeby.etherscan.io/tx/${presaleMintTransaction.transactionHash}`;
-  //         const mintedContainer = document.querySelector('.minted-container');
-  //         const countdownContainer = document.querySelector('.countdown');
-  //         const mintedTxnBtn = document.getElementById("mintedTxnBtn");
-  //         mintedTxnBtn.href = url;
-  //         countdownContainer.classList.add('hidden');
-  //         mintedContainer.classList.remove('hidden');
-  //       }
-  //       console.log("Minted successfully!", `Transaction Hash: ${presaleMintTransaction.transactionHash}`);
-  //     } else {
-  //       const mainText = document.getElementById("mainText");
-  //       mainText.innerText = mint_failed;
-  //       mintButton.innerText = button_presale_mint_whitelisted;
-  //       mintButton.disabled = false;
-  //
-  //       console.log("Failed to mint!");
-  //     }
-  //   } catch(e) {
-  //     const mainText = document.getElementById("mainText");
-  //     mainText.innerText = mint_failed;
-  //     mintButton.innerText = button_presale_mint_whitelisted;
-  //     mintButton.disabled = false;
-  //
-  //     // console.log(e);
-  //   }
-  // }
 }
