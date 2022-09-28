@@ -86,7 +86,7 @@ const updateConnectStatus = async () => {
   const onboarding     = new MetaMaskOnboarding();
   const onboardButton  = document.getElementById("connectWallet");
   const onboardButton2 = document.getElementById("connectWallet2");
-  spinner.remove();
+  // spinner.remove();
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText    = "Install MetaMask";
@@ -96,7 +96,7 @@ const updateConnectStatus = async () => {
       onboarding.startOnboarding();
     };
     onboardButton2.innerText    = "Install MetaMask";
-    onboardButton2.onclick = () => {
+    onboardButton2.onclick      = () => {
       onboardButton2.innerText  = "Connecting...";
       onboardButton2.disabled   = true;
       onboarding.startOnboarding();
@@ -110,16 +110,16 @@ const updateConnectStatus = async () => {
     window.address = accounts[0];
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
-    window.contract = new web3.eth.Contract(abi, contractAddress);
+    window.contract         = new web3.eth.Contract(abi, contractAddress);
     noMetamask.classList.add('hidden');
     loadInfo();
   } else {
     //// CONNECT TO METAMASK
-    onboardButton.innerText = "Connect MetaMask";
+    onboardButton.innerText  = "Connect MetaMask";
     onboardButton2.innerText = "Connect MetaMask";
     noMetamask.classList.remove('hidden');
-    noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Connect MetaMask to Unlock Full Access";
-    onboardButton.onclick = async () => {
+    noMetamaskH2.innerHTML   = "<i class='fa-solid fa-unlock'></i> Connect MetaMask to Get Started!";
+    onboardButton.onclick    = async () => {
       await window.ethereum
         .request({
           method: "eth_requestAccounts",
@@ -202,7 +202,7 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-  const spinner           = document.getElementById("spinner");
+  // const spinner           = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
