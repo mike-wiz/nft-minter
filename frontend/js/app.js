@@ -290,7 +290,7 @@ function setTotalPrice() {
   console.log("Window Info DeploymentConfig: " + window.info.deploymentConfig);
   console.log("=================================================================");
   console.log("Info: " + info);
-  console.log("Mint Price ? : " + info.10);
+  console.log("Mint Price ? : " + JSON.parse(info));
   console.log("Info DeploymentConfig: " + window.info.deploymentConfig);
   console.log("Info DeploymentConfig Mint Price: " + window.info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
