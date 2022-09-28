@@ -73,10 +73,6 @@ async function modal(modal) {
   close.onclick = function() {
     modal.style.display = "none";
   }
-  // Mint Success Modal Close Button
-  document.getElementById("mintModalClose").onclick = function() {
-    modal.style.display = "none";
-  }
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
@@ -324,7 +320,7 @@ async function mint() {
   const mintHeader         = document.getElementById("mintHeader");
   const mintContainer      = document.getElementById("mintContainer");
   const mint_success_text  = "Minted Successfully!";
-  const mint_success_btn   = "<h3>Welcome to #Team10k!</h3><br><h4>Transaction Hash: " + mintTransaction.transactionHash + "</h4><br><br><a id='mintModalClose' class='hero-btn btn mint-btn primaryBtn'><span>Close</span></a>";
+  const mint_success_body  = `<h3>Welcome to #Team10k!</h3><br><br><h4>Transaction Hash: ${mintTransaction.transactionHash}</h4>`;
   const mint_failed_text   = "Failed to Mint NFT";
   const mint_failed_btn    = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
@@ -341,7 +337,7 @@ async function mint() {
         // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
 
         mintHeader.innerHTML     = mint_success_text;
-        mintContainer.innerHTML  = mint_success_btn;
+        mintContainer.innerHTML  = mint_success_body;
 
         if (chain === 'rinkeby') {
           const url = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
