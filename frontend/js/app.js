@@ -192,6 +192,7 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
+  const spinner           = document.getElementById("spinner");
 
   let startTime = "";
   if (publicMintActive) {
@@ -213,7 +214,10 @@ async function loadInfo() {
     startTime = window.info.runtimeConfig.publicMintStart;
   }
 
+  spinner.remove();
+
   const clockdiv = document.getElementById("countdown");
+  clockdiv.classList.remove('hidden');
   clockdiv.setAttribute("data-date", startTime);
   countdown();
 
