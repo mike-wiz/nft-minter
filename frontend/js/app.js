@@ -340,15 +340,15 @@ async function mint() {
 
         console.log("Failed to Mint.");
 
-        mintContainer.previousSibling.innerHTML("Failed to Mint NFT");
-        mintContainer.innterHTML = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
+        document.getElementById("mintContainer").previousSibling.innerHTML("Failed to Mint NFT");
+        document.getElementById("mintContainer").innterHTML = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
       }
     } catch(e) {
 
       console.log(e);
 
-      mintContainer.previousSibling.innerHTML("Failed to Mint NFT");
-      mintContainer.innterHTML = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
+      document.getElementById("mintContainer").previousSibling.innerHTML("Failed to Mint NFT");
+      document.getElementById("mintContainer").innterHTML = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
       // const mainText       = document.getElementById("mainText");
       // mainText.innerText   = mint_failed;
