@@ -318,7 +318,7 @@ async function mint() {
   document.querySelector('.mint-qty').style.display = "none";
   document.querySelector('.total-price-container').style.display = "none";
 
-  mintHeader.innerHTML     = "Mint NFT Pending... ";
+  mintHeader.innerHTML     = "Minting... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
 
   const spinner        = "<span>Waiting for transaction...</span>";
