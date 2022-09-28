@@ -82,10 +82,9 @@ async function modal(modal) {
 }
 
 const updateConnectStatus = async () => {
-  const spinner        = document.getElementById("spinner");
   const onboarding     = new MetaMaskOnboarding();
   const onboardButton  = document.getElementById("connectWallet");
-  const onboardButton2 = document.getElementById("connectWallet2");
+  const spinner        = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     spinner.remove();
     //// METAMASK NOT INSTALLED
@@ -93,12 +92,6 @@ const updateConnectStatus = async () => {
     onboardButton.onclick = () => {
       onboardButton.innerText  = "Connecting...";
       onboardButton.disabled   = true;
-      onboarding.startOnboarding();
-    };
-    onboardButton2.innerText    = "Install MetaMask";
-    onboardButton2.onclick      = () => {
-      onboardButton2.innerText  = "Connecting...";
-      onboardButton2.disabled   = true;
       onboarding.startOnboarding();
     };
     noMetamask.classList.remove('hidden');
@@ -118,27 +111,9 @@ const updateConnectStatus = async () => {
     spinner.remove();
     //// CONNECT TO METAMASK
     onboardButton.innerText  = "Connect MetaMask";
-    onboardButton2.innerText = "Connect MetaMask";
     noMetamask.classList.remove('hidden');
     noMetamaskH2.innerHTML   = "<i class='fa-solid fa-unlock'></i> Connect MetaMask to Get Started!";
     onboardButton.onclick    = async () => {
-      await window.ethereum
-        .request({
-          method: "eth_requestAccounts",
-        })
-        .then(function (accts) {
-          onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accts[0].slice(-4)}`;
-          onboardButton.classList.add('active');
-          onboardButton.disabled  = true;
-          window.address          = accts[0];
-          accounts                = accts;
-          window.contract         = new web3.eth.Contract(abi, contractAddress);
-          location.reload();
-          noMetamask.classList.add('hidden');
-          loadInfo();
-        });
-    };
-    onboardButton2.onclick   = async () => {
       await window.ethereum
         .request({
           method: "eth_requestAccounts",
