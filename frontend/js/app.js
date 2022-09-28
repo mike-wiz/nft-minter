@@ -18,14 +18,6 @@ window.addEventListener("DOMContentLoaded", async () => {
   const noMetamaskH1 = document.getElementById("noMetamaskH1");
   const noMetamaskH2 = document.getElementById("noMetamaskH2");
 
-  const debug1       = document.getElementById("debug1");
-  const debug2       = document.getElementById("debug2");
-  const debug3       = document.getElementById("debug3");
-  const debug4       = document.getElementById("debug4");
-  const debug5       = document.getElementById("debug5");
-  const debug6       = document.getElementById("debug6");
-  const debug7       = document.getElementById("debug7");
-
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
   for(var i =0; i < mintTrigger.length; i++) {
@@ -36,20 +28,12 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeH2.innerText = welcome_h2;
   welcomeP.innerHTML  = welcome_p;
 
-
-  // debug1.innerHTML = "W: " + Object.values(window);
-  // debug2.innerHTML = "W ETH: " + Object.values(window.ethereum);
-  // debug3.innerHTML = "Web3: " + Object.values(window.web3);
-  // debug4.innerHTML = "Web3 Provider: " + Object.values(window.web3.currentProvider);
-
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
     checkChain();
   } else if (window.web3) {
     window.web3 = new Web3(window.web3.currentProvider);
   }
-
-  // debug5.innerHTML = "Web3 #2: " + Object.values(window.web3);
 
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
@@ -205,9 +189,7 @@ async function loadInfo() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
 
-  debug6.innerHTML = "Contract: " + Object.values(window.contract);
-  debug7.innerHTML = "getInfo(): " + Object.values(window.contract.methods);
-
+  console.log("Contract: " + Object.values(window.contract));
   console.log("Window INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
