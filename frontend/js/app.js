@@ -324,7 +324,7 @@ async function mint() {
   const mintHeader         = document.getElementById("mintHeader");
   const mintContainer      = document.getElementById("mintContainer");
   const mint_success_text  = "Minted Successfully!";
-  const mint_success_btn   = "<h3>Welcome to #Team10k!</h3><br><h4>Transaction Hash: " + ${mintTransaction.transactionHash} + "</h4><br><br><a id='mintModalClose' class='hero-btn btn mint-btn primaryBtn'><span>Close</span></a>";
+  const mint_success_btn   = "<h3>Welcome to #Team10k!</h3><br><h4>Transaction Hash: " + mintTransaction.transactionHash + "</h4><br><br><a id='mintModalClose' class='hero-btn btn mint-btn primaryBtn'><span>Close</span></a>";
   const mint_failed_text   = "Failed to Mint NFT";
   const mint_failed_btn    = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
