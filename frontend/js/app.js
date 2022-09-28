@@ -66,11 +66,15 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 //// MODAL JS
 async function modal(modal) {
-  // Get the <span> element that closes the modal
+  // Get the <span> Element that Closes the Modal
   var close = modal.getElementsByClassName("close")[0];
   modal.style.display = "block";
-  // When the user clicks on <span> (x), close the modal
+  // Close Modal
   close.onclick = function() {
+    modal.style.display = "none";
+  }
+  // Mint Success Modal Close Button
+  document.getElementById("mintModalClose").onclick = function() {
     modal.style.display = "none";
   }
   // When the user clicks anywhere outside of the modal, close it
@@ -314,13 +318,15 @@ async function mint() {
   const amount = parseInt(document.getElementById("mintInput").value);
   // const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
   const value = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(amount);
-  const publicMintActive  = await contract.methods.mintingActive().call();
-  const presaleMintActive = await contract.methods.presaleActive().call();
+  const publicMintActive   = await contract.methods.mintingActive().call();
+  const presaleMintActive  = await contract.methods.presaleActive().call();
 
-  const mintHeader        = document.getElementById("mintHeader");
-  const mintContainer     = document.getElementById("mintContainer");
-  const mint_failed_text  = "Failed to Mint NFT";
-  const mint_failed_btn   = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
+  const mintHeader         = document.getElementById("mintHeader");
+  const mintContainer      = document.getElementById("mintContainer");
+  const mint_success_text  = "Minted Successfully!";
+  const mint_success_btn   = "<h3>Welcome to #Team10k!</h3><br><h4>Transaction Hash: " + ${mintTransaction.transactionHash} + "</h4><br><br><a id='mintModalClose' class='hero-btn btn mint-btn primaryBtn'><span>Close</span></a>";
+  const mint_failed_text   = "Failed to Mint NFT";
+  const mint_failed_btn    = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
   if (publicMintActive) {
     // PUBLIC MINT
@@ -332,7 +338,10 @@ async function mint() {
 
       if (mintTransaction) {
 
-        console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
+        // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
+
+        mintHeader.innerHTML     = mint_success_text;
+        mintContainer.innerHTML  = mint_success_btn;
 
         if (chain === 'rinkeby') {
           const url = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
@@ -345,7 +354,7 @@ async function mint() {
         }
       } else {
 
-        console.log("Failed to Mint.");
+        // console.log("Failed to Mint.");
 
         mintHeader.innerHTML     = mint_failed_text;
         mintContainer.innerHTML  = mint_failed_btn;
@@ -354,11 +363,6 @@ async function mint() {
     } catch(e) {
 
       // console.log(e);
-
-      // window.location.reload();
-      console.log(mintButton);
-      console.log(mintHeader);
-      console.log(mintContainer);
 
       mintHeader.innerHTML     = mint_failed_text;
       mintContainer.innerHTML  = mint_failed_btn;
