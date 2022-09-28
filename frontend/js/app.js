@@ -200,6 +200,7 @@ async function loadInfo() {
 
     // console.log("Sale Active!");
 
+    spinner.remove();
     mintButton.innerText  = button_public_mint;
     mintActions.classList.remove('hidden');
     mintCollection.classList.remove('hidden');
@@ -211,10 +212,9 @@ async function loadInfo() {
 
     // console.log("Sale Not Active Yet...");
 
+    spinner.remove();
     startTime = window.info.runtimeConfig.publicMintStart;
   }
-
-  spinner.remove();
 
   const clockdiv = document.getElementById("countdown");
   clockdiv.classList.remove('hidden');
