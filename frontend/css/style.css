@@ -531,13 +531,13 @@ section {
   font-weight: 800;
   font-style: italic;
   text-transform: uppercase;
-  color: #FFF;
+  color: var(--primary);
 }
 .total-price-container p {
   font-size: 1.25rem;
   font-weight: 800;
   text-shadow: 2px 2px 0 var(--accent-color);
-  color: var(--primary);
+  color: #FFF;
 }
 
 input::-webkit-outer-spin-button,
