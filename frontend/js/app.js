@@ -216,7 +216,6 @@ async function loadInfo() {
     startTime = window.info.runtimeConfig.publicMintStart;
   }
 
-  console.log("Start Time: " + startTime);
   const clockdiv = document.getElementById("countdown");
   clockdiv.setAttribute("data-date", startTime);
   countdown();
@@ -233,7 +232,7 @@ async function loadInfo() {
   }
 
   // const price        = web3.utils.fromWei(info.deploymentConfig.mintPrice, 'ether');
-  const price        = web3.utils.fromWei(window.contract.methods.publicMintPrice().call(), 'ether');
+  const price        = web3.utils.fromWei(info.runtimeConfig.publicMintPrice, 'ether');
   const pricePerMint = document.getElementById("pricePerMint");
   const maxPerMint   = document.getElementById("maxPerMint");
   const totalSupply  = document.getElementById("totalSupply");
@@ -313,7 +312,7 @@ function setTotalPrice() {
     return;
   }
   // const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
-  const totalPriceWei = BigInt(info[2].publicMintPrice) * BigInt(mintInputValue);
+  const totalPriceWei = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(mintInputValue);
 
   let priceType = '';
   if(chain === 'rinkeby' || chain === 'ethereum') {
