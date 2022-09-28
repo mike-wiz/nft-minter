@@ -270,6 +270,9 @@ header .logo img {
 .wallet-btn {
   margin-left: 2rem;
 }
+.wallet-btn2 {
+  margin: 0 auto;
+}
 
 .active {
   box-shadow: none;
