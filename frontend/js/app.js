@@ -350,6 +350,8 @@ async function mint() {
 
       // console.log(e);
 
+      window.location.reload();
+
       document.getElementById("mintContainer").parentElement.firstChild.innerHTML = "Failed to Mint NFT";
       document.getElementById("mintContainer").innterHTML = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
 
