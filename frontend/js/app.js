@@ -10,13 +10,21 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
   }, 5000);
 
-  const welcomeH1  = document.getElementById("welcomeH1");
-  const welcomeH2  = document.getElementById("welcomeH2");
-  const welcomeP   = document.getElementById("welcomeP");
+  const welcomeH1    = document.getElementById("welcomeH1");
+  const welcomeH2    = document.getElementById("welcomeH2");
+  const welcomeP     = document.getElementById("welcomeP");
 
   const noMetamask   = document.getElementById("noMetamask");
   const noMetamaskH1 = document.getElementById("noMetamaskH1");
   const noMetamaskH2 = document.getElementById("noMetamaskH2");
+
+  const debug1       = document.getElementById("debug1");
+  const debug2       = document.getElementById("debug2");
+  const debug3       = document.getElementById("debug3");
+  const debug4       = document.getElementById("debug4");
+  const debug5       = document.getElementById("debug5");
+  const debug6       = document.getElementById("debug6");
+  const debug7       = document.getElementById("debug7");
 
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
@@ -29,14 +37,10 @@ window.addEventListener("DOMContentLoaded", async () => {
   welcomeP.innerHTML  = welcome_p;
 
 
-  console.log("W: " + window);
-  // console.log(JSON.stringify(window));
-  console.log("W ETH: " + window.ethereum);
-  // console.log(JSON.stringify(window.ethereum));
-  console.log("Web3: " + window.web3);
-  // console.log(JSON.stringify(window.web3));
-  console.log("Web3 Provider: " + window.web3.currentProvider);
-  // console.log(JSON.stringify(window.web3.currentProvider));
+  debug1.innerHTML = "W: " + window;
+  debug2.innerHTML = "W ETH: " + window.ethereum;
+  debug3.innerHTML = "Web3: " + window.web3;
+  debug4.innerHTML = "Web3 Provider: " + window.web3.currentProvider;
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -45,8 +49,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     window.web3 = new Web3(window.web3.currentProvider);
   }
 
-  console.log("Web3 #2: " + window.web3);
-  // console.log(JSON.stringify(window.web3));
+  debug5.innerHTML = "Web3 #2: " + window.web3;
 
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
@@ -143,6 +146,7 @@ const updateConnectStatus = async () => {
 };
 
 async function checkChain() {
+  console.log("Check Chain...");
   let chainId = 0;
   if(chain === 'rinkeby') {
     chainId = 4;
@@ -200,14 +204,14 @@ async function loadInfo() {
   window.info             = await window.contract.methods.getInfo().call();
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
-  console.log("Contract: " + window.contract);
-  // var str = JSON.stringify(window.contract);
-  alert(window.contract);
-  console.log("getInfo(): " + window.contract.methods);
-  // console.log(JSON.stringify(window.contract.methods.getInfo()));
+
+  debug6.innerHTML = "Contract: " + window.contract;
+  debug7.innerHTML = "getInfo(): " + window.contract.methods;
+
   console.log("Window INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
+  
   const mintActions       = document.getElementById("mintActions");
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
