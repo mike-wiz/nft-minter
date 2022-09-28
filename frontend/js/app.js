@@ -30,9 +30,13 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
   console.log("W: " + window);
+  console.log(JSON.stringify(window));
   console.log("W ETH: " + window.ethereum);
+  console.log(JSON.stringify(window.ethereum));
   console.log("Web3: " + window.web3);
+  console.log(JSON.stringify(window.web3));
   console.log("Web3 Provider: " + window.web3.currentProvider);
+  console.log(JSON.stringify(window.web3.currentProvider));
 
   if (window.ethereum) {
     window.web3 = new Web3(window.ethereum);
@@ -42,6 +46,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 
   console.log("Web3 #2: " + window.web3);
+  console.log(JSON.stringify(window.web3));
 
   if (window.web3) {
     // Check if User is already connected by retrieving the accounts
@@ -196,7 +201,9 @@ async function loadInfo() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
   console.log("Contract: " + window.contract);
-  console.log("getInfo(): " + window.contract.methods.getInfo());
+  console.log(JSON.stringify(window.contract));
+  console.log("getInfo(): " + window.contract.methods);
+  console.log(JSON.stringify(window.contract.methods.getInfo()));
   console.log("Window INFO: " + window.info);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
@@ -297,11 +304,6 @@ function setTotalPrice() {
   console.log("=================================================================");
   console.log("Info: " + info);
   console.log("Info DeploymentConfig: " + window.info.deploymentConfig);
-  // console.log("Mint Price: " + BigInt(info.deploymentConfig.mintPrice));
-  // console.log("Mint Price (Info): " + info.mintPrice);
-  // console.log("Mint Price DeploymentConfig: " + window.info.deploymentConfig.mintPrice);
-  // console.log("Mint Price (No BigInt): " + info[10]);
-  // console.log("Mint Price: " + BigInt(info[10]));
   console.log("Info DeploymentConfig Mint Price: " + window.info.deploymentConfig.mintPrice);
   console.log("Input Value: " + mintInputValue);
 
