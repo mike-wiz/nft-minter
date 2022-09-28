@@ -305,12 +305,15 @@ function setTotalPrice() {
 
 async function mint() {
 
-  const mintHeader         = document.getElementById("mintHeader");
-  const mintContainer      = document.getElementById("mintContainer");
+  const mintHeader     = document.getElementById("mintHeader");
+  const mintContainer  = document.getElementById("mintContainer");
 
   const mintButton     = document.getElementById("mintButton");
   mintButton.disabled  = true;
-  // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
+
+  // Get NFT Input Total Amount
+  const amount         = parseInt(document.getElementById("mintInput").value);
+
   document.querySelector('.info-container').style.display = "none";
   document.querySelector('.mint-qty').style.display = "none";
   document.querySelector('.total-price-container').style.display = "none";
@@ -318,15 +321,14 @@ async function mint() {
   mintHeader.innerHTML     = "Mint NFT Pending... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
 
+  // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
   const spinner        = "<span>Waiting for transaction...</span>";
   mintButton.innerHTML = spinner;
 
-  const amount = parseInt(document.getElementById("mintInput").value);
   // const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
   const value = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(amount);
   const publicMintActive   = await contract.methods.mintingActive().call();
   const presaleMintActive  = await contract.methods.presaleActive().call();
-
 
   const mint_success_text  = "NFT Minted Successfully!";
   const mint_failed_text   = "Failed to Mint NFT";
