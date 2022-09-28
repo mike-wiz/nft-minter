@@ -348,7 +348,7 @@ async function mint() {
         console.log("Failed to Mint.");
 
         mintHeader.innerHTML     = mint_failed_text;
-        mintContainer.innterHTML = mint_failed_btn;
+        mintContainer.innerHTML  = mint_failed_btn;
       }
 
     } catch(e) {
@@ -361,7 +361,7 @@ async function mint() {
       console.log(mintContainer);
 
       mintHeader.innerHTML     = mint_failed_text;
-      mintContainer.innterHTML = mint_failed_btn;
+      mintContainer.innerHTML  = mint_failed_btn;
 
       // const mainText       = document.getElementById("mainText");
       // mainText.innerText   = mint_failed;
