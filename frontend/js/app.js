@@ -321,7 +321,6 @@ async function mint() {
   mintHeader.innerHTML     = "Mint NFT Pending... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
 
-  // const spinner        = "<div class='dot-elastic'></div><span>Waiting for transaction...</span>";
   const spinner        = "<span>Waiting for transaction...</span>";
   mintButton.innerHTML = spinner;
 
@@ -347,7 +346,7 @@ async function mint() {
         // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
 
         mintHeader.innerHTML     = mint_success_text;
-        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "'></div>";
+        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled></div>";
 
         if (chain === 'rinkeby') {
           const url = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
