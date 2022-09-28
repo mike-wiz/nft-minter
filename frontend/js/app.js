@@ -154,8 +154,8 @@ const updateConnectStatus = async () => {
     };
   }
   // Remove Spinner
-  const spinner        = document.getElementById("spinner");
-  spinner.remove();
+  // const spinner        = document.getElementById("spinner");
+  document.getElementById("spinner").remove();
 };
 
 async function checkChain() {
