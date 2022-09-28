@@ -189,7 +189,7 @@ async function loadInfo() {
   const publicMintActive  = await contract.methods.mintingActive().call();
   const presaleMintActive = await contract.methods.presaleActive().call();
 
-  console.log("Contract: " + Object.values(window.contract));
+  // console.log("Contract: " + Object.values(window.contract));
   console.log(window.contract);
   console.log("Public Active: " + publicMintActive);
   console.log("Pre-sale Active: " + presaleMintActive);
@@ -220,6 +220,8 @@ async function loadInfo() {
   const clockdiv = document.getElementById("countdown");
   clockdiv.setAttribute("data-date", startTime);
   countdown();
+
+  console.log(info.deploymentConfig.mintPrice);
 
   //// SHOW CARD
   const countdownCard = document.querySelector('.countdown');
@@ -286,22 +288,22 @@ function setTotalPrice() {
   const mintInput      = document.getElementById("mintInput");
   const mintInputValue = parseInt(mintInput.value);
 
-  console.log("Window Info:");
-  console.log(window.info);
-  console.log("=================================================================");
-  console.log("Window Info DeploymentConfig:");
-  console.log(window.info.deploymentConfig);
-  console.log("=================================================================");
-  console.log("Info:");
-  console.log(info);
-  console.log("=================================================================");
-  console.log("Info DeploymentConfig: ");
-  console.log(info.deploymentConfig);
-  console.log("=================================================================");
-  console.log("Info DeploymentConfig Mint Price:");
-  console.log(info[2].publicMintPrice);
-  console.log("=================================================================");
-  console.log("Input Value: " + mintInputValue);
+  // console.log("Window Info:");
+  // console.log(window.info);
+  // console.log("=================================================================");
+  // console.log("Window Info DeploymentConfig:");
+  // console.log(window.info.deploymentConfig);
+  // console.log("=================================================================");
+  // console.log("Info:");
+  // console.log(info);
+  // console.log("=================================================================");
+  // console.log("Info DeploymentConfig: ");
+  // console.log(info.deploymentConfig);
+  // console.log("=================================================================");
+  console.log("Info Public Mint Price:");
+  console.log(info.publicMintPrice());
+  // console.log("=================================================================");
+  // console.log("Input Value: " + mintInputValue);
 
   const totalPrice    = document.getElementById("totalPrice");
   const mintButton    = document.getElementById("mintButton");
