@@ -299,7 +299,7 @@ function setTotalPrice() {
   console.log(info.deploymentConfig);
   console.log("=================================================================");
   console.log("Info DeploymentConfig Mint Price:");
-  console.log(window.info.deploymentConfig.mintPrice);
+  console.log(info.2.publicMintPrice);
   console.log("=================================================================");
   console.log("Input Value: " + mintInputValue);
 
@@ -311,7 +311,8 @@ function setTotalPrice() {
     mintInput.disabled   = true;
     return;
   }
-  const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  // const totalPriceWei = BigInt(info.deploymentConfig.mintPrice) * BigInt(mintInputValue);
+  const totalPriceWei = BigInt(info.2.publicMintPrice) * BigInt(mintInputValue);
 
   let priceType = '';
   if(chain === 'rinkeby' || chain === 'ethereum') {
