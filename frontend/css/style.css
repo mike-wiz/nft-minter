@@ -154,17 +154,20 @@ header .logo img {
   position: relative;
   padding: 100px 0 0;
 }
-.bottom {
+.hash, .bottom {
   padding: 40px 12px;
   background: #000;
 }
-.bottom h2 {
+.hash h2, .bottom h2 {
   font-size: 1.5rem;
   font-weight: 800;
   font-style: italic;
   text-align: center;
   text-transform: uppercase;
   color: var(--primary);
+}
+.bottom h2 {
+  font-size: 1.25rem;
 }
 .specs {
   position: relative;
@@ -181,9 +184,9 @@ header .logo img {
   color: var(--accent-color);
 }
 
-.flex {
-  display: flex;
-  flex-direction: column;
+.grid-2 {
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 .content {
