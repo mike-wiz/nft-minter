@@ -86,10 +86,7 @@ const updateConnectStatus = async () => {
   const onboarding      = new MetaMaskOnboarding();
   const onboardButton   = document.getElementById("connectWallet");
   const onboardButton2  = document.getElementById("connectWallet2");
-  const spinner         = document.getElementById("spinner");
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
-    // Remove Spinner
-    spinner.style.display = "none"; // spinner.remove();
     //// METAMASK NOT INSTALLED
     onboardButton.innerText     = "Install MetaMask";
     onboardButton.onclick       = () => {
@@ -109,15 +106,13 @@ const updateConnectStatus = async () => {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
     onboardButton.classList.add('active');
-    window.address = accounts[0];
+    window.address          = accounts[0];
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
     window.contract         = new web3.eth.Contract(abi, contractAddress);
-    noMetamask.classList.add('hidden');
+    // noMetamask.classList.add('hidden');
     loadInfo();
   } else {
-    // Remove Spinner
-    spinner.style.display = "none";
     //// CONNECT TO METAMASK
     onboardButton.innerText  = "Connect MetaMask";
     onboardButton2.innerText = "Connect MetaMask";
@@ -158,6 +153,10 @@ const updateConnectStatus = async () => {
         });
     };
   }
+
+  // Remove Spinner
+  const spinner         = document.getElementById("spinner");
+  spinner.style.display = "none"; // spinner.remove();
 };
 
 async function checkChain() {
@@ -223,10 +222,6 @@ async function loadInfo() {
   const mintCollection    = document.getElementById("mintCollection");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
-
-  // Remove Spinner
-  console.log(spinner);
-  spinner.style.display = "none";
 
   let startTime = "";
   if (publicMintActive) {
