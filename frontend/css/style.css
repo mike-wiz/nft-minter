@@ -167,7 +167,22 @@ header .logo img {
   color: var(--primary);
 }
 .specs {
+  padding: 80px 16px;
   background: var(--primary);
+}
+.specs h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--accent-color);
+  margin: 0 0 40px;
+  color: var(--accent-color);
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
