@@ -167,6 +167,7 @@ header .logo img {
   color: var(--primary);
 }
 .specs {
+  position: relative;
   padding: 80px 16px;
   background: var(--primary);
 }
