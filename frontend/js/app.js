@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   const noMetamaskH2 = document.getElementById("noMetamaskH2");
 
   const spinner      = document.getElementById("spinner");
-  spinner.classList.add('hidden');
+  spinner.classList.remove('hidden');
 
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
