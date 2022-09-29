@@ -155,7 +155,16 @@ header .logo img {
   padding: 100px 0 0;
 }
 .bottom {
+  padding: 40px 12px;
   background: #000;
+}
+.bottom h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-style: italic;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--primary);
 }
 
 .content {
