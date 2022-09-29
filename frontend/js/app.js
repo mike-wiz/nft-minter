@@ -225,8 +225,9 @@ async function loadInfo() {
   const mintButton        = document.getElementById("mintButton");
 
   // Remove Spinner
+  console.log(spinner);
   spinner.style.display = "none";
-  
+
   let startTime = "";
   if (publicMintActive) {
     //// PUBLIC ACTIVE
