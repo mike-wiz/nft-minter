@@ -202,9 +202,9 @@ header .logo img {
   padding: 80px 16px;
   margin: 0 auto;
 }
-.grid-item-inner div {
+.grid-item-inner div:first-child {
   padding: 20px;
-  background: #000;
+  background: rgba(255, 0, 0, 0.8);
   border-radius: 5px;
 }
 .grid-item-inner ul {
@@ -227,7 +227,7 @@ header .logo img {
   height: 180px;
   display: block;
   position: relative;
-  border-radius: 180px;
+  border-radius: 100%;
   overflow: hidden;
 }
 .grid-image img {
