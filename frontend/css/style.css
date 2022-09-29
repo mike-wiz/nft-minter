@@ -168,6 +168,7 @@ header .logo img {
 }
 .bottom h2 {
   font-size: 1.25rem;
+  margin-bottom: 8px;
 }
 .bottom h3 {
   font-size: 1rem;
