@@ -110,7 +110,7 @@ const updateConnectStatus = async () => {
     onboardButton.disabled  = true;
     onboarding.stopOnboarding();
     window.contract         = new web3.eth.Contract(abi, contractAddress);
-    // noMetamask.classList.add('hidden');
+    noMetamask.classList.add('hidden');
     loadInfo();
   } else {
     //// CONNECT TO METAMASK
