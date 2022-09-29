@@ -204,7 +204,7 @@ header .logo img {
 }
 .grid-item-block {
   padding: 20px;
-  background: rgba(255, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
 }
 .grid-item-inner h3 {
@@ -237,7 +237,7 @@ header .logo img {
   margin-bottom: 40px;
   border-radius: 100%;
   overflow: hidden;
-  background: rgba(255, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
 }
 .grid-image img {
   width: 100%;
@@ -855,6 +855,12 @@ input[type=number] {
   .grid-2 {
     grid-template-columns: 100%;
   }
+  .specs h2 {
+    text-align: center;
+  }
+  .grid-image {
+    margin: 0 auto 40px;
+  }
 }
 @media all and (max-width: 672px) {
   .full {
@@ -866,6 +872,15 @@ input[type=number] {
   }
 }
 @media all and (max-width: 580px) {
+  .content {
+    padding: 40px 16px;
+  }
+  .content.right {
+    padding-bottom: 120px;
+  }
+  .grid-item-inner {
+    padding: 40px 16px;
+  }
   .custom-shape-divider-bottom svg {
     height: 40px;
   }
