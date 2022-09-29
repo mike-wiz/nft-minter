@@ -4,7 +4,7 @@ const chain           = 'rinkeby'; // rinkeby, polygon, or ethereum
 
 const welcome_h1 = "MakePaul NFT Collection";
 const welcome_h2 = "A collection of 10,000 NFTs inspired by your favorite celebrity-athlete, Jake Paul!";
-const welcome_p1 = "Welcome to the MakePaul NFT Collection! A series of 10,000 NFTs inspired by everyone's favorite celebrity-athlete, Jake Paul! Each individual Jake Paul is uniquely generated and lives to brawl on the Ethereum blockchain. Unlock your very own unique Jake Paul to become a member of #Team10k and receive access to future member-only features &amp; benefits.<br><br>Just when you thought one Jake Paul was enough... On October 29th, 2022 all 10,000 unique Jake Paul NFTs will be revealed!";
+const welcome_p1 = "Welcome to the MakePaul NFT Collection! A series of 10,000 NFTs inspired by everyone's favorite celebrity-athlete, Jake Paul! Each individual Jake Paul is uniquely generated and lives to brawl on the Ethereum blockchain. Unlock your very own unique Jake Paul to become a member of #Team10k and receive access to future members-only benefits.<br><br>Just when you thought one Jake Paul was enough... On October 29th, 2022 all 10,000 unique Jake Paul NFTs will be revealed!";
 const welcome_p2 = "No fixed fights over here, only fixed prices. Each individual Jake Paul has a set price of <b>0.01171997 ETH</b> to ensure membership costs the same for everyone.";
 
 const h1_presale_coming_soon = "Coming Soon!";
