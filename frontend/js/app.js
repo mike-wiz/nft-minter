@@ -86,10 +86,6 @@ const updateConnectStatus = async () => {
   const onboarding      = new MetaMaskOnboarding();
   const onboardButton   = document.getElementById("connectWallet");
   const onboardButton2  = document.getElementById("connectWallet2");
-  // Remove Spinner
-  const spinner         = document.getElementById("spinner");
-  // spinner.remove();
-  spinner.style.display = "none";
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText     = "Install MetaMask";
@@ -157,6 +153,11 @@ const updateConnectStatus = async () => {
         });
     };
   }
+
+  // Remove Spinner
+  const spinner         = document.getElementById("spinner");
+  // spinner.remove();
+  spinner.style.display = "none";
 };
 
 async function checkChain() {
@@ -252,6 +253,7 @@ async function loadInfo() {
   // Set Reveal Date Countdown
   const clockdiv2 = document.getElementById("countdown2");
   clockdiv2.classList.remove('hidden');
+  clockdiv2.setAttribute("data-date", Date.parse(this.dataset.data-date));
   countdown(clockdiv2);
 
   // SHOW CARD
