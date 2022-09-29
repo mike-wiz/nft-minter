@@ -258,6 +258,9 @@ async function loadInfo() {
   clockdiv2.setAttribute("data-date", Date.parse("2022-10-29T00:00:00-04:00"));
   countdown(clockdiv2);
 
+  console.log(window.info.runtimeConfig.publicMintStart);
+  console.log(Date.parse("2022-10-29T00:00:00-04:00"));
+
   // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
   countdownCard.classList.add('show-card');
