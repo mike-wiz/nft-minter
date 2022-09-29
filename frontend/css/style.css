@@ -447,6 +447,10 @@ section {
   text-align: center;
 }
 
+.countdown-reveal {
+  margin-bottom: 40px;
+}
+
 /* MINT CONTAINER */
 
 .mint-container {
