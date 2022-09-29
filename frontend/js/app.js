@@ -103,7 +103,7 @@ const updateConnectStatus = async () => {
     };
     noMetamask.classList.remove('hidden');
     noMetamaskH2.innerHTML  = "<i class='fa-solid fa-unlock'></i> Install MetaMask to Get Started!";
-    spinner.style.display = "none"; // spinner.remove();
+    spinner.style.display   = "none"; // spinner.remove();
   } else if (accounts && accounts.length > 0) {
     //// CONNECTED TO METAMASK
     onboardButton.innerHTML = "<i class='fa-solid fa-plug'></i> Connected"; // `✔ ...${accounts[0].slice(-4)}`;
@@ -120,6 +120,7 @@ const updateConnectStatus = async () => {
     onboardButton2.innerText = "Connect MetaMask";
     noMetamask.classList.remove('hidden');
     noMetamaskH2.innerHTML   = "<i class='fa-solid fa-unlock'></i> Connect MetaMask to Get Started!";
+    spinner.style.display    = "none"; // spinner.remove();
     onboardButton.onclick    = async () => {
       await window.ethereum
         .request({
