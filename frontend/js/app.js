@@ -260,6 +260,7 @@ async function loadInfo() {
 
   console.log(window.info.runtimeConfig.publicMintStart);
   console.log(Date.parse("2022-10-29T00:00:00-04:00"));
+  console.log(Date.parse("2022-10-29"));
 
   // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
