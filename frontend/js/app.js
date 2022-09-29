@@ -18,6 +18,9 @@ window.addEventListener("DOMContentLoaded", async () => {
   const noMetamaskH1 = document.getElementById("noMetamaskH1");
   const noMetamaskH2 = document.getElementById("noMetamaskH2");
 
+  const spinner      = document.getElementById("spinner");
+  spinner.classList.add('hidden');
+
   // Mint Modal Trigger
   const mintTrigger = document.querySelectorAll(".mintTrigger"); // this element contains more than 1 DOMs.
   for(var i =0; i < mintTrigger.length; i++) {
@@ -86,7 +89,7 @@ const updateConnectStatus = async () => {
   const onboarding      = new MetaMaskOnboarding();
   const onboardButton   = document.getElementById("connectWallet");
   const onboardButton2  = document.getElementById("connectWallet2");
-  const spinner         = document.getElementById("spinner");
+
   if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
     //// METAMASK NOT INSTALLED
     onboardButton.innerText     = "Install MetaMask";
