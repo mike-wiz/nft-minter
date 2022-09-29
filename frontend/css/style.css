@@ -207,6 +207,13 @@ header .logo img {
   background: rgba(255, 0, 0, 0.8);
   border-radius: 5px;
 }
+.grid-item-inner h3 {
+  margin-bottom: 8px;
+  color: #1A1A1A;
+}
+.grid-item-inner p {
+  font-weight: 500;
+}
 .grid-item-inner ul {
   padding: 0 0 0 16px;
 }
@@ -227,6 +234,7 @@ header .logo img {
   height: 180px;
   display: block;
   position: relative;
+  margin-bottom: 40px;
   border-radius: 100%;
   overflow: hidden;
 }
