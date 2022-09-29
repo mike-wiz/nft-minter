@@ -197,15 +197,24 @@ header .logo img {
 }
 .grid-item-inner {
   width: 100%;
-  max-width: 480px;
+  max-width: 420px;
   display: block;
   padding: 80px 16px;
   margin: 0 auto;
+}
+.grid-item-inner div {
+  padding: 20px;
+  background: #000;
+  border-radius: 5px;
+}
+.grid-item-inner ul {
+  padding: 0 0 0 16px;
 }
 .grid-item-inner li {
   font-size: 1rem;
   font-weight: 700;
   padding: 6px 0;
+  color: #FFF;
 }
 .grid-item-inner li:before {
   font-family: 'FontAwesome';
@@ -816,6 +825,11 @@ input[type=number] {
     font-size: 13px;
   }
 }
+@media all and (max-width: 767px) {
+  .grid-2 {
+    grid-template-columns: 100%;
+  }
+}
 @media all and (max-width: 672px) {
   .full {
     background: #1A1A1A;
@@ -841,6 +855,13 @@ input[type=number] {
     max-width: 48px;
     padding-left: 8px;
     padding-right: 8px;
+  }
+  .bottom h2 {
+    font-size: 1rem;
+  }
+  .bottom h3 {
+    font-size: .8rem;
+    font-weight: 600;
   }
 }
 @media all and (max-width: 420px) {
