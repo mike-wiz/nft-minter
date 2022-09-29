@@ -253,13 +253,18 @@ async function loadInfo() {
   countdown(clockdiv);
 
   // Set Reveal Date Countdown
-  const clockdiv2 = document.getElementById("countdown2");
-  clockdiv2.classList.remove('hidden');
-  clockdiv2.setAttribute("data-date", Date.parse("2022-10-29T00:00:00-04:00") / 1000);
-  countdown(clockdiv2);
+  const revealDate = Date.parse("2022-10-29T00:00:00-04:00");
+  const clockdiv2  = document.getElementById("countdown2");
+  const now        = new Date().getTime();
+  const diff       = revealDate - now;
+  if (diff < 0) {
+    clockdiv2.classList.add('hidden');
+  } else {
+    clockdiv2.classList.remove('hidden');
+    clockdiv2.setAttribute("data-date", revealDate / 1000);
+    countdown(clockdiv2);
+  }
 
-  console.log(window.info.runtimeConfig.publicMintStart);
-  console.log(Date.parse("2022-10-29T00:00:00-04:00") / 1000);
 
   // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
