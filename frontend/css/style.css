@@ -222,6 +222,23 @@ header .logo img {
   margin: 0 5px 0 -15px;
   color: var(--primary);
 }
+.grid-image {
+  width: 180px;
+  height: 180px;
+  display: block;
+  position: relative;
+  border-radius: 180px;
+  overflow: hidden;
+}
+.grid-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .content {
   width: 100%;
