@@ -154,9 +154,6 @@ const updateConnectStatus = async () => {
     };
   }
 
-  // Remove Spinner
-  const spinner         = document.getElementById("spinner");
-  spinner.style.display = "none"; // spinner.remove();
 };
 
 async function checkChain() {
@@ -223,12 +220,15 @@ async function loadInfo() {
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
 
+  // Remove Spinner
+  const spinner         = document.getElementById("spinner");
+
   let startTime = "";
   if (publicMintActive) {
     //// PUBLIC ACTIVE
 
     // console.log("Sale Active!");
-
+    spinner.style.display = "none"; // spinner.remove();
     mintButton.innerText  = button_public_mint;
     mintActions.classList.remove('hidden');
     mintCollection.classList.remove('hidden');
@@ -239,7 +239,7 @@ async function loadInfo() {
     //// NOT ACTIVE
 
     // console.log("Sale Not Active Yet...");
-
+    spinner.style.display = "none"; // spinner.remove();
     startTime = window.info.runtimeConfig.publicMintStart;
   }
 
