@@ -207,6 +207,12 @@ header .logo img {
   font-weight: 700;
   padding: 6px 0;
 }
+.grid-item-inner li:before {
+  font-family: 'FontAwesome';
+  content: '\f42e';
+  margin: 0 5px 0 -15px;
+  color: var(--primary);
+}
 
 .content {
   width: 100%;
