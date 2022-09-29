@@ -852,14 +852,20 @@ input[type=number] {
   }
 }
 @media all and (max-width: 767px) {
-  .grid-2 {
-    grid-template-columns: 100%;
-  }
   .specs h2 {
     text-align: center;
   }
+  .grid-2 {
+    grid-template-columns: 100%;
+  }
   .grid-image {
     margin: 0 auto 40px;
+  }
+  .grid-item-inner h3 {
+    text-align: center;
+  }
+  .grid-item-inner p {
+    text-align: center;
   }
 }
 @media all and (max-width: 672px) {
@@ -889,9 +895,6 @@ input[type=number] {
   }
 }
 @media all and (max-width: 480px) {
-  .content.right {
-    padding: 60px 16px 180px;
-  }
   .input-number {
     max-width: 48px;
     padding-left: 8px;
