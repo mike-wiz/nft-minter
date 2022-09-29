@@ -169,6 +169,10 @@ header .logo img {
 .bottom h2 {
   font-size: 1.25rem;
 }
+.bottom h3 {
+  font-size: 1rem;
+  color: #FFF;
+}
 .specs {
   position: relative;
   padding: 80px 16px;
