@@ -166,11 +166,11 @@ header .logo img {
   text-transform: uppercase;
   color: var(--primary);
 }
-.bottom h2 {
+.hash h2 {
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
-.bottom h3 {
+.hash h3 {
   font-size: 1rem;
   text-align: center;
   text-transform: none;
@@ -208,11 +208,17 @@ header .logo img {
   border-radius: 5px;
 }
 .grid-item-inner h3 {
-  margin-bottom: 8px;
-  color: #1A1A1A;
+  font-size: 1.2rem;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--accent-color);
+  margin: 0 0 8px;
+  color: var(--primary);
 }
 .grid-item-inner p {
-  font-weight: 500;
+  font-weight: 600;
+  color: #FFF;
 }
 .grid-item-inner ul {
   padding: 0 0 0 16px;
@@ -900,10 +906,10 @@ input[type=number] {
     padding-left: 8px;
     padding-right: 8px;
   }
-  .bottom h2 {
+  .hash h2 {
     font-size: 1rem;
   }
-  .bottom h3 {
+  .hash h3 {
     font-size: .8rem;
     font-weight: 600;
   }
