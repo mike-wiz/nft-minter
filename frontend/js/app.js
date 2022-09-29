@@ -225,6 +225,9 @@ async function loadInfo() {
 
   const mintActions       = document.getElementById("mintActions");
   const mintCollection    = document.getElementById("mintCollection");
+  const mintHash          = document.getElementById("mintHash");
+  const mintSpecs         = document.getElementById("mintSpecs");
+  const mintAddress       = document.getElementById("mintAddress");
   const mintContainer     = document.getElementById("mintContainer");
   const mintButton        = document.getElementById("mintButton");
 
@@ -237,6 +240,9 @@ async function loadInfo() {
     mintButton.innerText  = button_public_mint;
     mintActions.classList.remove('hidden');
     mintCollection.classList.remove('hidden');
+    mintHash.classList.remove('hidden');
+    mintSpecs.classList.remove('hidden');
+    mintAddress.classList.remove('hidden');
     mintContainer.classList.remove('hidden');
     setTotalPrice();
   }
