@@ -171,6 +171,7 @@ header .logo img {
 }
 .bottom h3 {
   font-size: 1rem;
+  text-transform: none;
   color: #FFF;
 }
 .specs {
