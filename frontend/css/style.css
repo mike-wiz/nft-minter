@@ -166,6 +166,9 @@ header .logo img {
   text-transform: uppercase;
   color: var(--primary);
 }
+.specs {
+  background: var(--primary);
+}
 
 .content {
   width: 100%;
