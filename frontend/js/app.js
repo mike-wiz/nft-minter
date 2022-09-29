@@ -253,8 +253,7 @@ async function loadInfo() {
   // Set Reveal Date Countdown
   const clockdiv2 = document.getElementById("countdown2");
   clockdiv2.classList.remove('hidden');
-  console.log(clockdiv2.dataset.date);
-  clockdiv2.setAttribute("data-date", Date.parse(this.dataset.date));
+  clockdiv2.setAttribute("data-date", Date.parse("2022-10-29T00:00:00-04:00"));
   countdown(clockdiv2);
 
   // SHOW CARD
