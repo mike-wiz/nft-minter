@@ -202,7 +202,7 @@ header .logo img {
   padding: 80px 16px;
   margin: 0 auto;
 }
-.grid-item-inner div:first-child {
+.grid-item-block {
   padding: 20px;
   background: rgba(255, 0, 0, 0.8);
   border-radius: 5px;
@@ -237,6 +237,7 @@ header .logo img {
   margin-bottom: 40px;
   border-radius: 100%;
   overflow: hidden;
+  background: rgba(255, 0, 0, 0.8);
 }
 .grid-image img {
   width: 100%;
