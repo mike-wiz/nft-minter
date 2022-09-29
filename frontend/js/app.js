@@ -255,12 +255,11 @@ async function loadInfo() {
   // Set Reveal Date Countdown
   const clockdiv2 = document.getElementById("countdown2");
   clockdiv2.classList.remove('hidden');
-  clockdiv2.setAttribute("data-date", Date.parse("2022-10-29T00:00:00-04:00"));
+  clockdiv2.setAttribute("data-date", Date.parse("2022-10-29T00:00:00-04:00") / 1000);
   countdown(clockdiv2);
 
   console.log(window.info.runtimeConfig.publicMintStart);
-  console.log(Date.parse("2022-10-29T00:00:00-04:00"));
-  console.log(Date.parse("2022-10-29"));
+  console.log(Date.parse("2022-10-29T00:00:00-04:00") / 1000);
 
   // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
