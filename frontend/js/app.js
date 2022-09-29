@@ -253,7 +253,7 @@ async function loadInfo() {
   countdown(clockdiv);
 
   // Set Reveal Date Countdown
-  const revealDate = Date.parse("2022-09-29T00:00:00-04:00");
+  const revealDate = Date.parse("2022-08-29T00:00:00-04:00");
   const clockdiv2  = document.getElementById("countdown2");
   const now        = new Date().getTime();
   const diff       = revealDate - now;
