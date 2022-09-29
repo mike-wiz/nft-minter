@@ -4,16 +4,16 @@ function countdown(clockdiv) {
   const countDownTime = clockdiv.getAttribute("data-date") * 1000;
 
   const countdownfunction = setInterval(function () {
-    const now = new Date().getTime();
-    const diff = countDownTime - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const now     = new Date().getTime();
+    const diff    = countDownTime - now;
+    const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     if (diff < 0) {
-      // clockdiv.style.display = "none";
-      clockdiv.innerHTML = "<h2 id='noMetamaskH2'>Refresh Page</h2>";
+      clockdiv.style.display = "none";
+      // clockdiv.innerHTML = "<h2 id='noMetamaskH2'>Refresh Page</h2>";
       clearInterval(countdownfunction);
     } else {
       clockdiv.style.display = "block";
