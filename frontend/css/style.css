@@ -388,6 +388,11 @@ header .logo img {
   border-color: var(--primary);
 }
 
+/* MODIFIERS */
+.block {
+  display: block;
+}
+
 /* MODAL */
 .modal {
   width: 100%;
@@ -616,11 +621,6 @@ section {
   padding-left: 0;
   padding-right: 0;
   float: right;
-}
-
-.mint-btn {
-  text-align: center;
-  /* margin: auto; */
 }
 
 .input-number {

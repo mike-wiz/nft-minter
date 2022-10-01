@@ -389,7 +389,7 @@ async function mint() {
     // PUBLIC MINT
     const mint_success_text = "NFT Minted Successfully!";
     const mint_failed_text  = "Failed to Mint NFT";
-    const mint_failed_btn   = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
+    const mint_failed_btn   = "<a class='btn block' onclick='window.location.reload();'><span>Reload Page</span></a>";
     mintHeader.innerHTML    = "Minting... ";
     try {
       const mintTransaction = await contract.methods
@@ -397,18 +397,17 @@ async function mint() {
         .send({ from: window.address, value: value.toString() });
       if (mintTransaction) {
         // Success
-        console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
+        // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
         if (chain === 'rinkeby') {
           var url               = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
         } else {
           var url               = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
         }
-        console.log(url);
         mintHeader.innerHTML    = mint_success_text;
-        mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='btn' target='_blank'>View on Etherscan</a></div>";
+        mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='btn block' target='_blank'>View on Etherscan</a></div>";
       } else {
         // Error
-        console.log("Failed to Mint...", `Transaction: ${mintTransaction}`);
+        // console.log("Failed to Mint...", `Transaction: ${mintTransaction}`);
         mintHeader.innerHTML    = mint_failed_text;
         mintContainer.innerHTML = mint_failed_btn;
       }
