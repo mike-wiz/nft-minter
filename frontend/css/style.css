@@ -173,6 +173,7 @@ header .logo img {
 .hash a {
   display: block;
   font-size: 1rem;
+  font-weight: 600;
   text-align: center;
   text-transform: none;
   text-decoration: none;
@@ -436,6 +437,7 @@ header .logo img {
 }
 .modal-content h2 i {
   margin-right: 8px;
+  color: var(--primary);
 }
 #modalMobile h2 {
   font-size: 1.25rem;
