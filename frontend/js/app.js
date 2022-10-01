@@ -383,7 +383,7 @@ async function mint() {
 
   mintHeader.innerHTML     = "Verifying... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
-  mintButton.innerHTML     = "<span>Verifying Transaction...</span>";
+  // mintButton.innerHTML     = "<span>Verifying Transaction...</span>";
 
   // const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
   const value = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(amount);
@@ -399,7 +399,7 @@ async function mint() {
     try {
 
       mintHeader.innerHTML     = "Minting... ";
-      mintButton.innerHTML     = "<span>Completing Transaction...</span>";
+      // mintButton.innerHTML     = "<span>Completing Transaction...</span>";
 
       const mintTransaction = await contract.methods
         .mint(amount)
@@ -409,14 +409,14 @@ async function mint() {
         // Mint Success
         // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
         if (chain === 'rinkeby') {
-          const url              = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
+          const url             = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
           // const countdownContainer = document.querySelector('.countdown');
           // countdownContainer.classList.add('hidden');
         } else {
-          const url              = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
+          const url             = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
         }
-        mintHeader.innerHTML     = mint_success_text;
-        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='hero-btn btn mint-btn primaryBtn' target='_blank'>View on Etherscan</a></div>";
+        mintHeader.innerHTML    = mint_success_text;
+        mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='hero-btn btn mint-btn primaryBtn' target='_blank'>View on Etherscan</a></div>";
       } else {
         // Failed to Mint
         mintHeader.innerHTML     = mint_failed_text;
@@ -429,4 +429,5 @@ async function mint() {
       mintContainer.innerHTML  = mint_failed_btn;
     }
   }
+  
 }
