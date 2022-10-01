@@ -170,11 +170,17 @@ header .logo img {
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
-.hash h3 {
+.hash a {
+  display: block;
   font-size: 1rem;
   text-align: center;
   text-transform: none;
+  text-decoration: none;
   color: #FFF;
+  transition: .2s ease-in-out;
+}
+.hash a:hover {
+  color: #CCC;
 }
 .specs {
   position: relative;
@@ -427,6 +433,9 @@ header .logo img {
   text-shadow: 2px 2px 0 var(--accent-color);
   margin: 0 0 16px;
   color: #FFFFFF; /* var(--primary); */
+}
+.modal-content h2 i {
+  margin-right: 8px;
 }
 #modalMobile h2 {
   font-size: 1.25rem;

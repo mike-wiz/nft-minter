@@ -273,7 +273,6 @@ async function loadInfo() {
     countdown(clockdiv2);
   }
 
-
   // SHOW CARD
   const countdownCard = document.querySelector('.countdown');
   countdownCard.classList.add('show-card');
@@ -286,15 +285,22 @@ async function loadInfo() {
   }
 
   // const price        = web3.utils.fromWei(info.deploymentConfig.mintPrice, 'ether');
-  const price        = web3.utils.fromWei(info.runtimeConfig.publicMintPrice, 'ether');
-  const pricePerMint = document.getElementById("pricePerMint");
-  const maxPerMint   = document.getElementById("maxPerMint");
-  const totalSupply  = document.getElementById("totalSupply");
-  const mintInput    = document.getElementById("mintInput");
+  const price           = web3.utils.fromWei(info.runtimeConfig.publicMintPrice, 'ether');
+  const pricePerMint    = document.getElementById("pricePerMint");
+  const maxPerMint      = document.getElementById("maxPerMint");
+  const totalSupply     = document.getElementById("totalSupply");
+  const mintInput       = document.getElementById("mintInput");
+  const verifiedAddress = document.getElementById("verifiedAddress");
 
-  pricePerMint.innerText = `${price} ${priceType}`;
-  maxPerMint.innerText   = `${info.deploymentConfig.tokensPerMint}`;
-  totalSupply.innerText  = `${info.deploymentConfig.maxSupply}`;
+  verifiedAddress.innerText = `${contractAddress}`;
+  if(chain === 'rinkeby') {
+    verifiedAddress.href    = `https://rinkeby.etherscan.io/address/${contractAddress}`;
+  } else {
+    verifiedAddress.href    = `https://etherscan.io/address/${contractAddress}`;
+  }
+  pricePerMint.innerText    = `${price} ${priceType}`;
+  maxPerMint.innerText      = `${info.deploymentConfig.tokensPerMint}`;
+  totalSupply.innerText     = `${info.deploymentConfig.maxSupply}`;
   mintInput.setAttribute("max", info.deploymentConfig.tokensPerMint);
 
   // MINT INPUT
@@ -375,11 +381,9 @@ async function mint() {
   document.querySelector('.mint-qty').style.display = "none";
   document.querySelector('.total-price-container').style.display = "none";
 
-  mintHeader.innerHTML     = "Minting... ";
+  mintHeader.innerHTML     = "Verifying... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
-
-  const spinner        = "<span>Waiting for transaction...</span>";
-  mintButton.innerHTML = spinner;
+  mintButton.innerHTML     = "<span>Verifying Transaction...</span>";
 
   // const value = BigInt(info.deploymentConfig.mintPrice) * BigInt(amount);
   const value = BigInt(info.runtimeConfig.publicMintPrice) * BigInt(amount);
@@ -394,45 +398,35 @@ async function mint() {
     // PUBLIC MINT
     try {
 
+      mintHeader.innerHTML     = "Minting... ";
+      mintButton.innerHTML     = "<span>Completing Transaction...</span>";
+
       const mintTransaction = await contract.methods
         .mint(amount)
         .send({ from: window.address, value: value.toString() });
 
       if (mintTransaction) {
-
+        // Mint Success
         // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
-
-        mintHeader.innerHTML     = mint_success_text;
-        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled></div>";
-
         if (chain === 'rinkeby') {
-          const url = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
-          const mintedContainer    = document.querySelector('.minted-container');
-          const countdownContainer = document.querySelector('.countdown');
-          const mintedTxnBtn       = document.getElementById("mintedTxnBtn");
-          mintedTxnBtn.href        = url;
-          countdownContainer.classList.add('hidden');
-          mintedContainer.classList.remove('hidden');
+          const url              = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
+          // const countdownContainer = document.querySelector('.countdown');
+          // countdownContainer.classList.add('hidden');
+        } else {
+          const url              = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
         }
+        mintHeader.innerHTML     = mint_success_text;
+        mintContainer.innerHTML  = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='hero-btn btn mint-btn primaryBtn' target='_blank'>View on Etherscan</a></div>";
       } else {
-
-        // console.log("Failed to Mint.");
-
+        // Failed to Mint
         mintHeader.innerHTML     = mint_failed_text;
         mintContainer.innerHTML  = mint_failed_btn;
       }
-
     } catch(e) {
-
+      // Caught Error
       // console.log(e);
-
       mintHeader.innerHTML     = mint_failed_text;
       mintContainer.innerHTML  = mint_failed_btn;
-
-      // const mainText       = document.getElementById("mainText");
-      // mainText.innerText   = mint_failed;
-      // mintButton.innerText = button_public_mint;
-      // mintButton.disabled  = false;
     }
   }
 }
