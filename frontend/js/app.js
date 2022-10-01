@@ -399,14 +399,15 @@ async function mint() {
         // Success
         console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
         if (chain === 'rinkeby') {
-          const url             = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
+          var url               = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
         } else {
-          const url             = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
+          var url               = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
         }
+        console.log(url);
         mintHeader.innerHTML    = mint_success_text;
-        mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='hero-btn btn mint-btn primaryBtn' target='_blank'>View on Etherscan</a></div>";
+        mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='btn' target='_blank'>View on Etherscan</a></div>";
       } else {
-        // Failed to Mint
+        // Error
         console.log("Failed to Mint...", `Transaction: ${mintTransaction}`);
         mintHeader.innerHTML    = mint_failed_text;
         mintContainer.innerHTML = mint_failed_btn;
