@@ -376,11 +376,7 @@ async function mint() {
   // Get NFT Input Total Amount
   const amount         = parseInt(document.getElementById("mintInput").value);
 
-  // document.querySelector('.info-container').style.display = "none";
-  // document.querySelector('.mint-qty').style.display = "none";
-  // document.querySelector('.total-price-container').style.display = "none";
-
-  mintHeader.innerHTML     = "Verifying... ";
+  mintHeader.innerHTML     = "Verifying Transaction... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
   // mintButton.innerHTML     = "<span>Verifying Transaction...</span>";
 
@@ -389,28 +385,21 @@ async function mint() {
   const publicMintActive   = await contract.methods.mintingActive().call();
   const presaleMintActive  = await contract.methods.presaleActive().call();
 
-  const mint_success_text  = "NFT Minted Successfully!";
-  const mint_failed_text   = "Failed to Mint NFT";
-  const mint_failed_btn    = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
-
   if (publicMintActive) {
     // PUBLIC MINT
+    const mint_success_text = "NFT Minted Successfully!";
+    const mint_failed_text  = "Failed to Mint NFT";
+    const mint_failed_btn   = "<a class='hero-btn btn mint-btn primaryBtn' onclick='window.location.reload();'><span>Reload Page</span></a>";
+    mintHeader.innerHTML    = "Minting... ";
     try {
-
-      mintHeader.innerHTML     = "Minting... ";
-      // mintButton.innerHTML     = "<span>Completing Transaction...</span>";
-
       const mintTransaction = await contract.methods
         .mint(amount)
         .send({ from: window.address, value: value.toString() });
-
       if (mintTransaction) {
-        // Mint Success
-        // console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
+        // Success
+        console.log("Minted Successfully!", `Transaction Hash: ${mintTransaction.transactionHash}`);
         if (chain === 'rinkeby') {
           const url             = `https://rinkeby.etherscan.io/tx/${mintTransaction.transactionHash}`;
-          // const countdownContainer = document.querySelector('.countdown');
-          // countdownContainer.classList.add('hidden');
         } else {
           const url             = `https://etherscan.io/tx/${mintTransaction.transactionHash}`;
         }
@@ -418,11 +407,12 @@ async function mint() {
         mintContainer.innerHTML = "<div class='mint-success-container'><h3>Welcome to #Team10k!</h3><h4>Transaction Hash: </h4><input type='text' value='" + mintTransaction.transactionHash + "' disabled><br><br><a href='" + url + "' class='hero-btn btn mint-btn primaryBtn' target='_blank'>View on Etherscan</a></div>";
       } else {
         // Failed to Mint
-        mintHeader.innerHTML     = mint_failed_text;
-        mintContainer.innerHTML  = mint_failed_btn;
+        console.log("Failed to Mint...", `Transaction: ${mintTransaction}`);
+        mintHeader.innerHTML    = mint_failed_text;
+        mintContainer.innerHTML = mint_failed_btn;
       }
     } catch(e) {
-      // Caught Error
+      // Try Catch Error
       // console.log(e);
       mintHeader.innerHTML     = mint_failed_text;
       mintContainer.innerHTML  = mint_failed_btn;
