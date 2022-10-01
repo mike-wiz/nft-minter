@@ -370,16 +370,15 @@ async function mint() {
 
   const mintHeader     = document.getElementById("mintHeader");
   const mintContainer  = document.getElementById("mintContainer");
-
-  const mintButton     = document.getElementById("mintButton");
-  mintButton.disabled  = true;
+  // const mintButton     = document.getElementById("mintButton");
+  // mintButton.disabled  = true;
 
   // Get NFT Input Total Amount
   const amount         = parseInt(document.getElementById("mintInput").value);
 
-  document.querySelector('.info-container').style.display = "none";
-  document.querySelector('.mint-qty').style.display = "none";
-  document.querySelector('.total-price-container').style.display = "none";
+  // document.querySelector('.info-container').style.display = "none";
+  // document.querySelector('.mint-qty').style.display = "none";
+  // document.querySelector('.total-price-container').style.display = "none";
 
   mintHeader.innerHTML     = "Verifying... ";
   mintContainer.innerHTML  = "<div class='dot-container'><div class='dot-elastic'></div></div>";
@@ -429,5 +428,5 @@ async function mint() {
       mintContainer.innerHTML  = mint_failed_btn;
     }
   }
-  
+
 }
